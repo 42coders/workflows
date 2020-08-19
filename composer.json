@@ -1,0 +1,54 @@
+{
+    "name": "the42coders/workflows",
+    "description": "This Package allows you to automate your Laravel Application from your Backend.",
+    "keywords": [
+        "42coders",
+        "workflows"
+    ],
+    "homepage": "https://github.com/42coders/workflows",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Max Hutschenreiter",
+            "email": "max@42coders.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "../../phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "the42coders\\Workflows\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "the42coders\\Workflows\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "the42coders\\Workflows\\WorkflowsServiceProvider"
+            ],
+            "aliases": {
+                "Workflows": "the42coders\\Workflows\\WorkflowsFacade"
+            }
+        }
+    }
+}
