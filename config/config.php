@@ -87,21 +87,4 @@ return [
 
     ],
     'queue' => 'redis',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Nova
-    |--------------------------------------------------------------------------
-    |
-    | You can set the Nova Resources and the DynamicWorkflow Action to get an easy Nova integration.
-    |
-    */
-    'nova' => [
-        'resources' => [
-            the42coders\Workflows\Nova\Workflow::class,
-        ],
-        'actions' => [
-            new the42coders\Workflows\Nova\Actions\DynamicWorkflow,
-        ],
-    ]
 ];
