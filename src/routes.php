@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/workflow/', 'the42coders\Workflows\Http\Controllers\WorkflowController@index')->name('workflow.index');
+Route::get('/workflow/create', 'the42coders\Workflows\Http\Controllers\WorkflowController@create')->name('workflow.create');
+Route::post('/workflow/store', 'the42coders\Workflows\Http\Controllers\WorkflowController@store')->name('workflow.store');
 Route::get('/workflow/{id}', 'the42coders\Workflows\Http\Controllers\WorkflowController@show')->name('workflow.show');
 Route::post('/workflow/reRun/{workflow_log_id}', 'the42coders\Workflows\Http\Controllers\WorkflowController@reRun')->name('workflow.reRun');
 Route::post('/workflow/{id}/addTask', 'the42coders\Workflows\Http\Controllers\WorkflowController@addTask')->name('workflow.addTask');

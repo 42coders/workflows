@@ -58,12 +58,6 @@
         @endforeach
     </div>
     <div class="col-right">
-        <div class="menu">
-            <ul>
-                <li onclick="editor.changeModule('Home'); changeModule(event);"
-                    class="selected">{{ $workflow->name }}</li>
-            </ul>
-        </div>
         <div id="drawflow" ondrop="drop(event)" ondragover="allowDrop(event)">
             <div class="btn-logs">
                 <i id="log" class="fas fa-binoculars" onclick="loadLogs()"></i>

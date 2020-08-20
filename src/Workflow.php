@@ -16,6 +16,10 @@ class Workflow extends Model
 
     private DataBus $data;
 
+    protected $fillable = [
+        'name',
+    ];
+
     function __construct(array $attributes = [])
     {
         parent::__construct($attributes);

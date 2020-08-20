@@ -13,11 +13,31 @@ use App\Http\Controllers\Controller;
 
 class WorkflowController extends Controller
 {
+
+    public function index()
+    {
+        $workflows = Workflow::all();
+
+        return view('workflows::index', ['workflows' => $workflows]);
+    }
+
     public function show($id)
     {
         $workflow = Workflow::find($id);
 
         return view('workflows::diagram', ['workflow' => $workflow]);
+    }
+
+    public function create()
+    {
+        return view('workflows::create');
+    }
+
+    public function store(Request $request)
+    {
+        $workflow = Workflow::create($request->all());
+
+        return redirect(route('workflow.show', ['id' => $workflow->id]));
     }
 
     public function addTask($id, Request $request)

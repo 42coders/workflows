@@ -11,7 +11,7 @@ class ModelHasClass extends Condition
     public function check(Model $model, DataBus $data): bool
     {
 
-        if(get_class($model) == 'test'){
+        if(get_class($model) == 'App\User'){
             return true;
         }
 

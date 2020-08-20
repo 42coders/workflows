@@ -11,6 +11,8 @@ use Illuminate\Support\Arr;
 class Condition extends Model implements ConditionInterface
 {
 
+    public $condition;
+
     public function actions()
     {
         return $this->belongsToMany('the42coders\Workflows\Tasks\Task', 'action_condition', 'action_id', 'condition_id');
