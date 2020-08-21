@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Create a new Workflow</h1>
+                <h1>{{__('workflows.Create a new Workflow')}}</h1>
             </div>
         </div>
 
@@ -17,8 +17,8 @@
                    </div>
                    </div>
                    <div class="col-md-12 text-right">
-                   <a href="/workflow" class="btn btn-warning">Cancle</a>
-                   <button type="submit" class="btn btn-success">Save</button>
+                   <a href="/workflow" class="btn btn-warning">{{__('workflows.Cancel')}}</a>
+                   <button type="submit" class="btn btn-success">{{__('workflows.Save')}}</button>
                    </div>
                </form>
             </div>

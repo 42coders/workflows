@@ -9,16 +9,16 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a href="/workflow/create" class="btn btn-default">create</a>
+                <a href="/workflow/create" class="btn btn-default">{{__('workflows.create')}}</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <table class="table">
                     <tr>
-                        <th>Name</th>
-                        <th>Tasks</th>
-                        <th>Created at</th>
+                        <th>{{__('workflows.Name')}}</th>
+                        <th>{{__('workflows.Tasks')}}</th>
+                        <th>{{__('workflows.Created at')}}</th>
                         <th></th>
                     </tr>
                     @foreach($workflows as $workflow)
@@ -27,9 +27,9 @@
                             <td>{{ $workflow->tasks->count() }}</td>
                             <td>{{ $workflow->created_at->format('d.m.Y') }}</td>
                             <td>
-                                <a href="/workflow/{{$workflow->id}}"><i class="fas fa-eye">show</i></a>
-                                <a href="/workflow/{{$workflow->id}}/edit"><i class="fas fa-eye">edit</i></a>
-                                <a href="/workflow/{{$workflow->id}}/delete"><i class="fas fa-trash-alt">delete</i></a>
+                                <a href="/workflow/{{$workflow->id}}"><i class="fas fa-eye">{{__('workflows.show')}}</i></a>
+                                <a href="/workflow/{{$workflow->id}}/edit"><i class="fas fa-eye">{{__('workflows.edit')}}</i></a>
+                                <a href="/workflow/{{$workflow->id}}/delete"><i class="fas fa-trash-alt">{{__('workflows.delete')}}</i></a>
                             </td>
                         </tr>
                     @endforeach
