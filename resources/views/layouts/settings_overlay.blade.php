@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12" style="margin-bottom: 20px;">
                 <div class="settings-headline">
-                    <h1>{!! $element::$icon !!} {{ __('workflows::workflows.Elements.'.$element->name) }} {{ __('workflows::workflows.Settings') }}</h1>
+                    <h1>{!! $element::$icon !!} {{__('workflows.Elements.'.$element->name) }} {{__('workflows.Settings') }}</h1>
                 </div>
             </div>
             <div class="col-md-12">
@@ -13,7 +13,7 @@
                         <div class="form-group">
                             <select class="form-control" name="{{$field}}->type" onchange="loadResourceIntelligence({{ $element->id }}, '{{ $element->family }}', '{{ $element->getFieldValue($field) }}', '{{ $field }}', this);">
                                 @foreach(config('workflows.data_resources') as $resourceName => $resourceClass)
-                                    <option value='{{ $resourceClass }}' {{ $element->fieldIsSelected($field, $resourceClass) }} >{{ __('workflows::workflows.Resources.'.$resourceName) }}</option>
+                                    <option value='{{ $resourceClass }}' {{ $element->fieldIsSelected($field, $resourceClass) }} >{{ __('workflows.Resources.'.$resourceName) }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -31,8 +31,8 @@
             </div>
             <div class="col-md-12">
                 <div class="settings-footer text-right">
-                    <button class="btn btn-default" onclick="closeSettings();">{{ __('workflows::workflows.Close') }}</button>
-                    <button class="btn btn-success" onclick="saveFields({{ $element->id }}, '{{ $element->family }}');">{{ __('workflows::workflows.Save') }}</button>
+                    <button class="btn btn-default" onclick="closeSettings();">{{__('workflows.Close') }}</button>
+                    <button class="btn btn-success" onclick="saveFields({{ $element->id }}, '{{ $element->family }}');">{{__('workflows.Save') }}</button>
                 </div>
             </div>
         </div>
