@@ -11,5 +11,20 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/workflow.js', 'public/js/workflow.js')
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            jquery: 'jquery/src/jquery'
+        }
+    }
+});
+
+mix.autoload({
+    jquery: ['$', 'window.jQuery'],
+});
+
+mix.js([
+        'resources/js/workflow.js',
+        'node_modules/jquery/dist/jquery.js',
+    ], 'public/js/workflow.js')
     .sass('resources/sass/workflow.scss', 'public/css/workflow.css');

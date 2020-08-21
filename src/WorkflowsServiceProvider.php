@@ -31,7 +31,8 @@ class WorkflowsServiceProvider extends ServiceProvider
 
             // Publishing assets.
             $this->publishes([
-                __DIR__.'/../public' => public_path('vendor/workflows'),
+                __DIR__.'/../public/css' => public_path('vendor/workflows/css'),
+                __DIR__.'/../public/js' => public_path('vendor/workflows/js'),
             ], 'assets');
 
             // Publishing the translation files.
