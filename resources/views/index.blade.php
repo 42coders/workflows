@@ -27,9 +27,9 @@
                             <td>{{ $workflow->tasks->count() }}</td>
                             <td>{{ $workflow->created_at->format('d.m.Y') }}</td>
                             <td>
-                                <a href="/workflow/{{$workflow->id}}"><i class="fas fa-eye">show</i></a>
-                                <a href="/workflow/{{$workflow->id}}/edit"><i class="fas fa-eye">edit</i></a>
-                                <a href="/workflow/{{$workflow->id}}/delete"><i class="fas fa-trash-alt">delete</i></a>
+                                <a href="/workflow/{{$workflow->id}}"><i class="fas fa-eye"></i></a> -
+                                <a href="/workflow/{{$workflow->id}}/edit"><i class="fas fa-edit"></i></a> -
+                                <a href="/workflow/{{$workflow->id}}/delete"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                     @endforeach

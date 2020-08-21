@@ -13,7 +13,7 @@ return [
     | To easily integrate the Workflow frontend to your Style you can set your layout and the section.
     |
     */
-    'layout' => 'layouts.app',
+    'layout' => 'workflows::layouts.workflow_app',
     'section' => 'content',
 
     /*

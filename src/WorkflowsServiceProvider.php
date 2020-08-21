@@ -30,9 +30,9 @@ class WorkflowsServiceProvider extends ServiceProvider
             ], 'views');
 
             // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/workflows'),
-            ], 'assets');*/
+            $this->publishes([
+                __DIR__.'/../public' => public_path('vendor/workflows'),
+            ], 'assets');
 
             // Publishing the translation files.
             $this->publishes([
