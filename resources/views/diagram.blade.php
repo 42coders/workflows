@@ -18,8 +18,7 @@
         }</style>
     <link rel="stylesheet" href="/mx/css/common.css" charset="UTF-8" type="text/css">
 
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/drawflow.js') }}"></script>
+    <script src="{{ asset('vendor/workflows/js/workflow.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix-core.js"></script>
 
     <!-- Fonts -->
@@ -28,8 +27,7 @@
 
 
     <!-- Styles -->
-    <link href="{{ asset('css/workflow_app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/drawflow.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/workflows/css/workflow.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix.css" rel="stylesheet">
 
     <script>
