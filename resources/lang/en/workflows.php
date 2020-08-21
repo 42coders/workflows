@@ -34,4 +34,5 @@ return [
     'Name' => 'Name',
     'Tasks' => 'Tasks',
     'Created at' => 'Created at',
+    'ReRun' => 'ReRun',
 ];

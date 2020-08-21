@@ -1,5 +1,5 @@
 <div>
-    <div class="title-box">{!! $icon !!} {{ __('workflows::workflows.Elements.'.$elementName) }}</div>
+    <div class="title-box">{!! $icon !!} {{ __('workflows.Elements.'.$elementName) }}</div>
     <div class="box">
 
     </div>

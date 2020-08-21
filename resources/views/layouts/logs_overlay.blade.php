@@ -3,12 +3,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="settings-footer text-right">
-                    <button class="btn btn-default" onclick="closeSettings();">{{ __('workflows::workflows.Close') }}</button>
+                    <button class="btn btn-default" onclick="closeSettings();">{{ __('workflows.Close') }}</button>
                 </div>
             </div>
             <div class="col-md-12" style="margin-bottom: 20px;">
                 <div class="settings-headline">
-                    <h1> {{ __('workflows::workflows.Logs.workflowLogs') }}</h1>
+                    <h1> {{ __('workflows.Logs.workflowLogs') }}</h1>
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
                                 <td>{{ $workflowLog->start->diffInSeconds($workflowLog->end) }}</td>
                                 <td>{{ $workflowLog->start }}</td>
                                 <td>{{ $workflowLog->end }}</td>
-                                <td><button class="btn btn-success" onclick="reRun({{ $workflowLog->id }});">ReRun</button></td>
+                                <td><button class="btn btn-success" onclick="reRun({{ $workflowLog->id }});">{{ __('workflows.ReRun') }}</button></td>
                             </tr>
                         @endforeach
                     </table>
@@ -44,7 +44,7 @@
             </div>
             <div class="col-md-12">
                 <div class="settings-footer text-right">
-                    <button class="btn btn-default" onclick="closeSettings();">{{ __('workflows::workflows.Close') }}</button>
+                    <button class="btn btn-default" onclick="closeSettings();">{{ __('workflows.Close') }}</button>
                 </div>
             </div>
         </div>
