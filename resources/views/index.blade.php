@@ -34,6 +34,7 @@
                         </tr>
                     @endforeach
                 </table>
+                {{ $workflows->links() }}
             </div>
         </div>
     </div>

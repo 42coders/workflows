@@ -6,6 +6,9 @@ Route::get('/workflow/', 'the42coders\Workflows\Http\Controllers\WorkflowControl
 Route::get('/workflow/create', 'the42coders\Workflows\Http\Controllers\WorkflowController@create')->name('workflow.create');
 Route::post('/workflow/store', 'the42coders\Workflows\Http\Controllers\WorkflowController@store')->name('workflow.store');
 Route::get('/workflow/{id}', 'the42coders\Workflows\Http\Controllers\WorkflowController@show')->name('workflow.show');
+Route::get('/workflow/{id}/edit', 'the42coders\Workflows\Http\Controllers\WorkflowController@edit')->name('workflow.edit');
+Route::get('/workflow/{id}/delete', 'the42coders\Workflows\Http\Controllers\WorkflowController@delete')->name('workflow.delete');
+Route::post('/workflow/{id}/update', 'the42coders\Workflows\Http\Controllers\WorkflowController@update')->name('workflow.update');
 Route::post('/workflow/reRun/{workflow_log_id}', 'the42coders\Workflows\Http\Controllers\WorkflowController@reRun')->name('workflow.reRun');
 Route::post('/workflow/{id}/addTask', 'the42coders\Workflows\Http\Controllers\WorkflowController@addTask')->name('workflow.addTask');
 Route::post('/workflow/{id}/addTrigger', 'the42coders\Workflows\Http\Controllers\WorkflowController@addTrigger')->name('workflow.addTrigger');

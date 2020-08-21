@@ -16,7 +16,7 @@ class WorkflowController extends Controller
 
     public function index()
     {
-        $workflows = Workflow::all();
+        $workflows = Workflow::paginate(3);
 
         return view('workflows::index', ['workflows' => $workflows]);
     }
@@ -38,6 +38,35 @@ class WorkflowController extends Controller
         $workflow = Workflow::create($request->all());
 
         return redirect(route('workflow.show', ['id' => $workflow->id]));
+    }
+
+    public function edit($id)
+    {
+        $workflow = Workflow::find($id);
+
+        return view('workflows::edit', [
+            'workflow' => $workflow
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $workflow = Workflow::find($id);
+
+        $workflow->update($request->all());
+
+        return redirect(route('workflow.index'));
+    }
+
+    public function delete($id)
+    {
+        $workflow = Workflow::find($id);
+
+        //TODO: delete all depending tasks?
+        $workflow->delete();
+
+        return redirect(route('workflow.index'));
+
     }
 
     public function addTask($id, Request $request)
