@@ -11,10 +11,6 @@ class ModelValueIs extends Condition
     public function check(Model $model, DataBus $data): bool
     {
 
-        if($this->compareValues()){
-            return true;
-        }
-
-        return false;
+        return $this->compareValues();
     }
 }

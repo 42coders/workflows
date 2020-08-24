@@ -20,7 +20,7 @@ class DataBus
     {
 
         foreach ($fields as $name => $field) {
-            $className = $field['type'] ?? 'the42coders\\Workflows\\DataBuses\\ValueResource';
+            $className = $field['type'] ?? ValueResource::class;
             $resource = new $className();
             $this->data[$name] = $resource->getData($name, $field['value'], $model, $this);
         }
@@ -39,7 +39,7 @@ class DataBus
 
     public function get(string $key, string $default = null)
     {
-        return isset($this->data[$key]) ? $this->data[$key] : $default;
+        return $this->data[$key] ?? $default;
     }
 
     public function setOutput(string $key, string $value)
