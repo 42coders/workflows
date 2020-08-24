@@ -36,10 +36,10 @@ A Trigger is the Starting Point and defines how a Workflow gets called.
 The Observer Trigger can listen to Eloquent Model Events and will then pass the Model which triggered the Event to the 
 Workflow.
 
-To make it Work add the WorkflowObserverable to your Eloquent Model. 
+To make it Work add the WorkflowObservable to your Eloquent Model. 
 
 ``` php
- use WorkflowObserverable;
+ use WorkflowObservable;
 ```
 
 ### Tasks

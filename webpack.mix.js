@@ -23,6 +23,8 @@ mix.autoload({
     jquery: ['$', 'window.jQuery'],
 });
 
+mix.config.fileLoaderDirs.fonts = 'public/fonts';
+
 mix.js([
         'resources/js/workflow.js',
         'node_modules/jquery/dist/jquery.js',
