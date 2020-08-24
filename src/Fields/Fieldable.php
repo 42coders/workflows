@@ -30,11 +30,7 @@ trait Fieldable
             return '';
         }
 
-        if(empty($this->data_fields[$field]['value'])){
-            return '';
-        }
-
-        return $this->data_fields[$field]['value'];
+        return $this->data_fields[$field]['value'] ?? '';
 
     }
 
@@ -47,7 +43,7 @@ trait Fieldable
     public function getFieldType(string $field): string
     {
 
-        return isset($this->data_fields[$field]) ? $this->data_fields[$field]['type'] : '';
+        return $this->data_fields[$field]['type'] ?? '';
 
     }
 
