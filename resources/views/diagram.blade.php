@@ -35,12 +35,17 @@
 
 
     </script>
+    <style>
+        #drawflow{
+            background-image: url({{ asset('vendor/workflows/img/nature_background.jpeg') }});
+        }
+    </style>
 
 </head>
 <body>
 <header>
     <div style="width: 250px; ">
-        <a href=""><img src="/img/42workflows.png" class="img-fluid" /></a>
+        <a href="/workflow"><img src="{{ asset('vendor/workflows/img/42workflows.png') }}" class="img-fluid" /></a>
     </div>
 </header>
 <div class="wrapper">
