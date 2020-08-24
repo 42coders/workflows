@@ -102,4 +102,9 @@ trait Fieldable
         return [];
     }
 
+    public function inputField($key)
+    {
+        return $this->inputFields()[$key] ?? null;
+    }
+
 }

@@ -16,8 +16,8 @@ class ValueResource implements Resource
     public static function loadResourceIntelligence(Model $element, $value, $field)
     {
 
-        if(isset($element->inputFields()[$field])){
-            return $element->inputFields()[$field]->render($element, $value, $field);
+        if($element->inputField($field)){
+            return $element->inputField($field)->render($element, $value, $field);
         }
 
         return view('workflows::fields.text_field', [

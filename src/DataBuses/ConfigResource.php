@@ -17,8 +17,8 @@ class ConfigResource implements Resource
 
     public static function loadResourceIntelligence(Model $element, $value, $field)
     {
-        if(isset($element->inputFields()[$field])){
-            return $element->inputFields()[$field]->render($field, $value);
+        if($element->inputField($field)){
+            return $element->inputField($field)->render($field, $value);
         }
 
         return view('workflows::fields.text_field', [
