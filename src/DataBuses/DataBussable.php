@@ -22,7 +22,7 @@ trait DataBussable
             //    $newFields[$key] = $this->parentable->name.' - '.$value;
             //}
             foreach($this->parentable::$output as $key => $value){
-                $newFields[$this->parentable->name.' - '.$key] = $value;
+                $newFields[$this->parentable->name . ' - ' . $key . ' - ' . $this->parentable->getFieldValue($value)] = $value;
             }
 
             $newFields = $this->parentable->getParentDataBusKeys($newFields);

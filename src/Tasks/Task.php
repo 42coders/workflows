@@ -73,10 +73,6 @@ class Task extends Model implements TaskInterface
         return $this->morphMany('the42coders\Workflows\Tasks\Task', 'parentable');
     }
 
-    /*public function parent(){
-        return $this->belongsTo('the42coders\Workflows\Tasks\Task', 'id', 'parent_id');
-    }*/
-
     /**
      * Return Collection of models by type.
      *

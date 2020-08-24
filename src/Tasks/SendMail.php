@@ -5,7 +5,6 @@ namespace the42coders\Workflows\Tasks;
 
 
 use Illuminate\Support\Facades\Storage;
-use the42coders\Workflows\DataBuses\DataBus;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 

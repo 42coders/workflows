@@ -15,9 +15,10 @@ class CreateConditionsTable extends Migration
     {
         Schema::create('conditions', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
+            $table->bigInteger('parentable_id')->nullable()->index();
+            $table->string('parentable_type')->nullable()->index();
             $table->string('name');
-            $table->json('data')->nullable();
+            $table->json('data_fields')->nullable();
             $table->timestamps();
         });
     }
