@@ -40,6 +40,10 @@ class Task extends Model implements TaskInterface
         'pos_y',
     ];
 
+    public static $commonFields = [
+        'Description' => 'description',
+    ];
+
     protected $casts = [
         'data_fields' => 'array',
     ];

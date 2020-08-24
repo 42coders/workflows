@@ -11,12 +11,13 @@
 
     <!-- Scripts -->
     <!-- Loads and initializes the library -->
-    <style>@media print {
+    <style>
+        @media print {
             #ghostery-purple-box {
                 display: none !important
             }
-        }</style>
-    <link rel="stylesheet" href="/mx/css/common.css" charset="UTF-8" type="text/css">
+        }
+    </style>
 
     <script src="{{ asset('vendor/workflows/js/workflow.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix-core.js"></script>

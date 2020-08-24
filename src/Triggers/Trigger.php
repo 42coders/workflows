@@ -44,6 +44,10 @@ class Trigger extends Model
         'data_fields' => 'array',
     ];
 
+    public static $commonFields = [
+        'Description' => 'description',
+    ];
+
     public function children(){
         return $this->morphMany('the42coders\Workflows\Tasks\Task', 'parentable');
     }

@@ -9,16 +9,16 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a href="/workflow/create" class="btn btn-default">{{__('workflows.create')}}</a>
+                <a href="/workflow/create" class="btn btn-default">{{__('workflows::workflows.create')}}</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <table class="table">
                     <tr>
-                        <th>{{ __('workflows.Name')}}</th>
-                        <th>{{ __('workflows.Tasks')}}</th>
-                        <th>{{ __('workflows.Created at')}}</th>
+                        <th>{{ __('workflows::workflows.Name')}}</th>
+                        <th>{{ __('workflows::workflows.Tasks')}}</th>
+                        <th>{{ __('workflows::workflows.Created at')}}</th>
                         <th></th>
                     </tr>
                     @foreach($workflows as $workflow)

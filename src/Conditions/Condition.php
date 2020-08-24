@@ -64,4 +64,22 @@ class Condition extends Model implements ConditionInterface
         return true;
     }
 
+    public function compareValues($value1, $operator, $value2)
+    {
+        switch($operator){
+            case '==': return $value1 == $value2;
+            case '===': return $value1 === $value2;
+            case '!=': return $value1 != $value2;
+            case '!==': return $value1 !== $value2;
+            case '<': return $value1 < $value2;
+            case '<=': return $value1 <= $value2;
+            case '>': return $value1 > $value2;
+            case '>=': return $value1 >= $value2;
+            case '>=': return $value1 >= $value2;
+        }
+
+        return false;
+    }
+
+
 }
