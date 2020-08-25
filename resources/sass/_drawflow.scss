@@ -173,7 +173,7 @@ cursor: pointer;
   height: calc(100%);
   //background: var(--background-color);
   //background-size: 25px 25px;
- 
+
   background-repeat: no-repeat;
     background-size: cover;
   // linear-gradient(to right, #f1f1f1 1px, transparent 1px),
@@ -319,7 +319,7 @@ cursor: pointer;
   background: blue;
 }
 
-#settings-container{
+.settings-container{
     display: none;
     position: absolute;
     top: 0;

@@ -225,7 +225,8 @@ class WorkflowController extends Controller
         ];
     }
 
-    public function getElementSettings($id, Request $request){
+    public function getElementSettings($id, Request $request)
+    {
         $workflow = Workflow::find($id);
 
         if($request->type == 'task'){
@@ -242,7 +243,26 @@ class WorkflowController extends Controller
             ]);
     }
 
-    public function loadResourceIntelligence($id, Request $request){
+    public function getElementConditions($id, Request $request)
+    {
+        $workflow = Workflow::find($id);
+
+        if($request->type == 'task'){
+            $element = Task::where('workflow_id', $workflow->id)->where('id', $request->element_id)->first();
+        }
+        if($request->type == 'trigger'){
+            $element = Trigger::where('workflow_id', $workflow->id)->where('id', $request->element_id)->first();
+        }
+
+        return view('workflows::layouts.conditions_overlay', [
+            'element' => $element,
+            'conditions' => $element->conditions,
+        ]);
+
+    }
+
+    public function loadResourceIntelligence($id, Request $request)
+    {
 
         $workflow = Workflow::find($id);
 

@@ -79,7 +79,10 @@
         </div>
     </div>
 </div>
-<div id="settings-container" style="overflow: scroll;">
+<div id="settings-container" class="settings-container" style="overflow: scroll;">
+
+</div>
+<div id="conditions-container" class="settings-container" style="overflow: scroll;">
 
 </div>
 <script>
@@ -456,6 +459,34 @@
             success: function (data) {
                 $('#settings-container').html(data);
                 $('#settings-container').fadeIn();
+            }
+        });
+    }
+
+    function loadContitions(type, element_id = 0, element){
+
+        if(element_id == 0){
+            var div = $(element);
+            var count = 0;
+            while(div.attr('data-type') != type && count < 30){
+                div = div.parent();
+                count++;
+            }
+            element_id = div.attr('data-' + type + '_id');
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/workflow/{{$workflow->id}}/getElementConditions",
+            data: {
+                type: type,
+                element_id: element_id,
+            },
+            dataType: "text",
+            success: function (data) {
+                console.log('test');
+                $('#conditions-container').html(data);
+                $('#conditions-container').fadeIn();
             }
         });
     }

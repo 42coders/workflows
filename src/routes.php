@@ -17,6 +17,7 @@ Route::post('/workflow/{id}/addConnection', 'the42coders\Workflows\Http\Controll
 Route::post('/workflow/{id}/removeConnection', 'the42coders\Workflows\Http\Controllers\WorkflowController@removeConnection')->name('workflow.removeConnection');
 Route::post('/workflow/{id}/removeTask', 'the42coders\Workflows\Http\Controllers\WorkflowController@removeTask')->name('workflow.removeTask');
 Route::post('/workflow/{id}/updateNodePosition', 'the42coders\Workflows\Http\Controllers\WorkflowController@updateNodePosition')->name('workflow.updateNodePosition');
-Route::post('/workflow/{id}/getElementSettings', 'the42coders\Workflows\Http\Controllers\WorkflowController@getElementSettings')->name('workflow.getElementSettings');
+Route::post('/workflow/{id}/getElementSettings', 'the42coders\Workflows\Http\Controllers\WorkflowController@getElementSettings')->name('workflow.getSettings');
+Route::post('/workflow/{id}/getElementConditions', 'the42coders\Workflows\Http\Controllers\WorkflowController@getElementConditions')->name('workflow.getElementConditions');
 Route::post('/workflow/{id}/getLogs', 'the42coders\Workflows\Http\Controllers\WorkflowController@getLogs')->name('workflow.getLogs');
 Route::post('/workflow/{id}/loadResourceIntelligence', 'the42coders\Workflows\Http\Controllers\WorkflowController@loadResourceIntelligence')->name('workflow.loadResourceIntelligence');
