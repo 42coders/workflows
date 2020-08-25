@@ -34,6 +34,7 @@ class WorkflowsServiceProvider extends ServiceProvider
                 __DIR__.'/../public/css' => public_path('vendor/workflows/css'),
                 __DIR__.'/../public/js' => public_path('vendor/workflows/js'),
                 __DIR__.'/../resources/img' => public_path('vendor/workflows/img'),
+                __DIR__.'/../public/fonts' => public_path('fonts'),
             ], 'assets');
 
             // Publishing the translation files.
