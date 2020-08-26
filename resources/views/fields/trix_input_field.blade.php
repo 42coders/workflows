@@ -1,5 +1,4 @@
 <div class="row">
-
     @foreach($placeholders as $placholderCategories => $placholder)
             <div class="dropdown" style="margin-left: 15px; margin-bottom: 10px;">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"

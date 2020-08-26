@@ -422,6 +422,10 @@
         $('#settings-container').html('');
         $('#settings-container').fadeOut();
     }
+    function closeConditions(){
+        $('#conditions-container').html('');
+        $('#conditions-container').fadeOut();
+    }
 
     function loadLogs(){
         $.ajax({
