@@ -36,7 +36,7 @@
 
     </script>
     <style>
-        #drawflow{
+        #drawflow {
             background-image: url({{ asset('vendor/workflows/img/nature_background.jpeg') }});
         }
     </style>
@@ -45,7 +45,7 @@
 <body>
 <header>
     <div style="width: 250px; ">
-        <a href="/workflow"><img src="{{ asset('vendor/workflows/img/42workflows.png') }}" class="img-fluid" /></a>
+        <a href="/workflow"><img src="{{ asset('vendor/workflows/img/42workflows.png') }}" class="img-fluid"/></a>
     </div>
 </header>
 <div class="wrapper">
@@ -90,19 +90,20 @@
     const editor = new Drawflow(id);
     editor.start();
 
-    @foreach($workflow->tasks as $task)
-        var new_node = `@include('workflows::layouts.task_node_html', ['elementName' => $task->name, 'element' => $task, 'type' => 'task', 'icon' => $task::$icon])`;
-        editor.addNode(0, '{{ $task->name }}', 1, 1, {{$task->pos_x}}, {{ $task->pos_y }}, '{{ $task->name }}', {
-            task_id: {{$task->id}},
-            type: 'task'
-        }, new_node);
-    @endforeach
-    @foreach($workflow->triggers as $trigger)
-        var new_node = `@include('workflows::layouts.task_node_html', ['elementName' => $trigger->name, 'element' => $trigger, 'type' => 'trigger', 'icon' => $trigger::$icon])`;
-        editor.addNode(0, '{{ $trigger->name }}', 0, 1, {{$trigger->pos_x}}, {{ $trigger->pos_y }}, '{{ $trigger->name }}', {
-            trigger_id: {{$trigger->id}},
-            type: 'trigger'
-        }, new_node);
+        @foreach($workflow->tasks as $task)
+    var new_node = `@include('workflows::layouts.task_node_html', ['elementName' => $task->name, 'element' => $task, 'type' => 'task', 'icon' => $task::$icon])`;
+    editor.addNode(0, '{{ $task->name }}', 1, 1, {{$task->pos_x}}, {{ $task->pos_y }}, '{{ $task->name }}', {
+        task_id: {{$task->id}},
+        type: 'task'
+    }, new_node);
+        @endforeach
+        @foreach($workflow->triggers as $trigger)
+    var new_node = `@include('workflows::layouts.task_node_html', ['elementName' => $trigger->name, 'element' => $trigger, 'type' => 'trigger', 'icon' => $trigger::$icon])`;
+    editor.addNode(0, '{{ $trigger->name }}', 0, 1, {{$trigger->pos_x}}, {{ $trigger->pos_y }}, '{{ $trigger->name }}', {
+        trigger_id: {{$trigger->id}},
+        type: 'trigger'
+    }, new_node);
+
     @endforeach
 
     function loadResourceIntelligence(element_id, type, value, field_name, element) {
@@ -126,6 +127,29 @@
                 console.log('#' + answer.id);
                 console.log($('#' + answer.id).length);
                 $('#' + answer.id).html(answer.html);
+            }
+        });
+    }
+
+    function saveConditions(id, type) {
+        var data = $('#builder').queryBuilder('getRules');
+        console.log(data);
+        $.ajax({
+            type: "POST",
+            url: "/workflow/{{$workflow->id}}/changeConditions",
+            dataType: 'text',
+            data: {
+                'data': data,
+                'type': type,
+                'id': id,
+            },
+            dataType: "json",
+            success: function (answer) {
+                console.log(answer);
+                //editor.editor_mode = 'edit';
+                //changeMode('lock');
+                //$('#' + answer.name + '_' + answer.id).modal('hide');
+                closeConditions();
             }
         });
     }
@@ -157,14 +181,14 @@
 
     }
 
-    @foreach($workflow->tasks as $task)
+        @foreach($workflow->tasks as $task)
         @if(!empty($task->parentable))
-            var parentNode = editor.getNodeByData('{{$task->parentable->family}}_id', {{ $task->parentable->id }});
+    var parentNode = editor.getNodeByData('{{$task->parentable->family}}_id', {{ $task->parentable->id }});
 
-            var node = editor.getNodeByData('task_id', {{ $task->id }});
+    var node = editor.getNodeByData('task_id', {{ $task->id }});
 
-            editor.addConnection('node-' + node.id, 'node-' + parentNode.id, 'input_1', 'output_1');
-        @endif
+    editor.addConnection('node-' + node.id, 'node-' + parentNode.id, 'input_1', 'output_1');
+    @endif
     @endforeach
 
     // Events!
@@ -352,16 +376,16 @@
 
         switch (name) {
             @foreach(config('workflows.tasks') as $taskName => $taskClass)
-                case '{{ $taskName }}':
-                    var {{$taskName}}_new_node = `@include('workflows::layouts.task_node_html', ['elementName' => $taskName, 'fields' => $taskClass::$fields, 'type' => 'task', 'icon' => $taskClass::$icon])`;
-                    editor.addNode(0, '{{ $taskName }}', 1, 1, pos_x, pos_y, '{{ $taskName }}', {type: 'task'}, {{$taskName}}_new_node);
-                    break;
+            case '{{ $taskName }}':
+                var {{$taskName}}_new_node = `@include('workflows::layouts.task_node_html', ['elementName' => $taskName, 'fields' => $taskClass::$fields, 'type' => 'task', 'icon' => $taskClass::$icon])`;
+                editor.addNode(0, '{{ $taskName }}', 1, 1, pos_x, pos_y, '{{ $taskName }}', {type: 'task'}, {{$taskName}}_new_node);
+                break;
             @endforeach
             @foreach(config('workflows.triggers.types') as $triggerName => $triggerClass)
-                case '{{$triggerName}}':
-                    var {{$taskName}}_new_node = `@include('workflows::layouts.task_node_html', ['elementName' => $triggerName, 'fields' => $triggerClass::$fields, 'type' => 'trigger', 'icon' => $triggerClass::$icon])`;
-                    editor.addNode(0, '{{$triggerName}}', 0, 1, pos_x, pos_y, '{{$triggerName}}', {type: 'trigger'}, {{$taskName}}_new_node);
-                    break;
+            case '{{$triggerName}}':
+                var {{$taskName}}_new_node = `@include('workflows::layouts.task_node_html', ['elementName' => $triggerName, 'fields' => $triggerClass::$fields, 'type' => 'trigger', 'icon' => $triggerClass::$icon])`;
+                editor.addNode(0, '{{$triggerName}}', 0, 1, pos_x, pos_y, '{{$triggerName}}', {type: 'trigger'}, {{$taskName}}_new_node);
+                break;
             @endforeach
             default:
         }
@@ -418,16 +442,17 @@
 
     }
 
-    function closeSettings(){
+    function closeSettings() {
         $('#settings-container').html('');
         $('#settings-container').fadeOut();
     }
-    function closeConditions(){
+
+    function closeConditions() {
         $('#conditions-container').html('');
         $('#conditions-container').fadeOut();
     }
 
-    function loadLogs(){
+    function loadLogs() {
         $.ajax({
             type: "POST",
             url: "/workflow/{{$workflow->id}}/getLogs",
@@ -440,12 +465,12 @@
         });
     }
 
-    function loadSettings(type, element_id = 0, element){
+    function loadSettings(type, element_id = 0, element) {
 
-        if(element_id == 0){
+        if (element_id == 0) {
             var div = $(element);
             var count = 0;
-            while(div.attr('data-type') != type && count < 30){
+            while (div.attr('data-type') != type && count < 30) {
                 div = div.parent();
                 count++;
             }
@@ -467,12 +492,12 @@
         });
     }
 
-    function loadContitions(type, element_id = 0, element){
+    function loadContitions(type, element_id = 0, element) {
 
-        if(element_id == 0){
+        if (element_id == 0) {
             var div = $(element);
             var count = 0;
-            while(div.attr('data-type') != type && count < 30){
+            while (div.attr('data-type') != type && count < 30) {
                 div = div.parent();
                 count++;
             }

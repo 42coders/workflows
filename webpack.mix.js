@@ -20,14 +20,14 @@ mix.webpackConfig({
 });
 
 mix.autoload({
-    jquery: ['$', 'window.jQuery'],
+    jquery: ['$', 'window.jQuery']
 });
 
 mix.config.fileLoaderDirs.fonts = 'public/fonts';
 
 mix.js([
-        'resources/js/workflow.js',
         'node_modules/jquery/dist/jquery.js',
-        'node_modules/bootstrap/dist/js/bootstrap.bundle.js'
+        'resources/js/workflow.js',
+        'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
     ], 'public/js/workflow.js')
     .sass('resources/sass/workflow.scss', 'public/css/workflow.css');

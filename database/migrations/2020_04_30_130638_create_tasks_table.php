@@ -21,6 +21,7 @@ class CreateTasksTable extends Migration
             $table->string('type');
             $table->string('name');
             $table->json('data_fields')->nullable();
+            $table->json('conditions')->nullable();
             $table->integer('node_id')->nullable();
             $table->integer('pos_x')->default(0);
             $table->integer('pos_y')->default(0);

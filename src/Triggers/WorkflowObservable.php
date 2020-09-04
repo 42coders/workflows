@@ -56,6 +56,7 @@ trait WorkflowObservable
         $class_array = explode('\\', $class);
 
         $className = $class_array[count($class_array) - 1];
+
         return Trigger::where('type', 'the42coders\Workflows\Triggers\ObserverTrigger')
             ->where('data_fields->class->value', 'like', '%'.$className.'%')
             ->where('data_fields->event->value', $event)

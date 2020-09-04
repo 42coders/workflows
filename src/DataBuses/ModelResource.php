@@ -35,6 +35,18 @@ class ModelResource implements Resource
         return $variables;
     }
 
+    public static function checkCondition(Model $element, String $field, String $operator, String $value)
+    {
+        switch($operator){
+            case 'equal':
+                return $element->{$field} == $value;
+            case 'not_equal':
+                return $element->{$field} != $value;
+            default:
+                return true;
+        }
+    }
+
     public static function loadResourceIntelligence(Model $element, $value, $field_name)
     {
 

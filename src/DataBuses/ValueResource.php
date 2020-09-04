@@ -13,6 +13,11 @@ class ValueResource implements Resource
         return $value;
     }
 
+    public static function getValues(Model $element, $value, $field)
+    {
+        return [];
+    }
+
     public static function loadResourceIntelligence(Model $element, $value, $field)
     {
 

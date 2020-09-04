@@ -19,6 +19,7 @@ class CreateTriggersTable extends Migration
             $table->string('name');
             $table->boolean('queueable')->default(true);
             $table->json('data_fields')->nullable();
+            $table->json('conditions')->nullable();
             $table->bigInteger('workflow_id');
             $table->integer('pos_x');
             $table->integer('pos_y');

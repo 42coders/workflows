@@ -2,6 +2,7 @@
 
 namespace the42coders\Workflows\Http\Controllers;
 
+use the42coders\Workflows\DataBuses\DataBusResource;
 use the42coders\Workflows\Loggers\WorkflowLog;
 use the42coders\Workflows\Tasks\Execute;
 use the42coders\Workflows\Tasks\Task;
@@ -125,6 +126,24 @@ class WorkflowController extends Controller
             'node_id' => $request->id,
         ];
 
+    }
+
+    public function changeConditions($id, Request $request)
+    {
+
+        $workflow = Workflow::find($id);
+
+        if ($request->type == 'task') {
+            $element = $workflow->tasks->find($request->id);
+        }
+
+        if ($request->type == 'trigger') {
+            $element = $workflow->triggers->find($request->id);
+        }
+
+        $element->conditions = $request->data;
+        $element->save();
+        return $element;
     }
 
     public function changeValues($id, Request $request)
@@ -254,9 +273,16 @@ class WorkflowController extends Controller
             $element = Trigger::where('workflow_id', $workflow->id)->where('id', $request->element_id)->first();
         }
 
+        $filter = [];
+
+        foreach(config('workflows.data_resources') as $resourceName => $resourceClass){
+            $filter[$resourceName] = $resourceClass::getValues($element, null, null);
+        }
+
         return view('workflows::layouts.conditions_overlay', [
             'element' => $element,
             'conditions' => $element->conditions,
+            'allFilters' => $filter,
         ]);
 
     }

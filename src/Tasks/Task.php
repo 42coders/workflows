@@ -51,11 +51,6 @@ class Task extends Model implements TaskInterface
     public static array $fields = [];
     public static array $output = [];
 
-    public function conditions()
-    {
-        return $this->belongsToMany('the42coders\Workflows\Conditions\Condition', 'condition_task', 'condition_id', 'task_id');
-    }
-
     public function workflows()
     {
         return $this->belongsToMany('the42coders\Workflows\Workflow');
@@ -108,10 +103,21 @@ class Task extends Model implements TaskInterface
      */
     public function checkConditions(Model $model, DataBus $data): bool
     {
-        foreach ($this->conditions as $condition) {
-            if (!$condition->check($model, $data)) {
+
+        //TODO: This needs to get smoother :(
+
+        $conditions = json_decode($this->conditions);
+        foreach($conditions->rules as $rule){
+            $ruleDetails = explode('-',$rule->id);
+            $DataBus = $ruleDetails[0];
+            $field = $ruleDetails[1];
+
+            $result = config('workflows.data_resources')[$DataBus]::checkCondition($this, $field, $rule->operator, $rule->value);
+
+            if(!$result){
                 return false;
             }
+
         }
 
         return true;
