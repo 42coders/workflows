@@ -27,7 +27,7 @@ class DomPDF extends Task
     public function execute(): void
     {
         $pdf = PDF::loadHTML($this->getData('html'));
-        $this->setData('pdf_file', $pdf->output());
+        $this->setDataCollection('pdf_file', $pdf->output());
     }
 
 }

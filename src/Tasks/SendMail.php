@@ -15,6 +15,7 @@ class SendMail extends Task
         'Recipients' => 'recipients',
         'Sender' => 'sender',
         'Content' => 'content',
+        'Files' => 'files',
     ];
 
     public static $icon = '<i class="far fa-envelope"></i>';
@@ -28,7 +29,11 @@ class SendMail extends Task
             $message->subject($dataBus->get('subject'))
                 ->to($dataBus->get('recipients'))
                 ->from($dataBus->get('sender'));
-               // ->attachData($dataBus->get('pdf_file'), 'Datei');
+            $counter = 1;
+            foreach($dataBus->get('files') as $file){
+                $message->attachData($file, 'Datei_'.$counter);
+                $counter++;
+            }
         });
 
     }
