@@ -18,7 +18,6 @@ class WorkflowsServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'workflows');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'workflows');
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-        //$this->registerRoutes();
 
         if ($this->app->runningInConsole()) {
             $this->publishes([

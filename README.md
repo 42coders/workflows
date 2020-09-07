@@ -17,6 +17,61 @@ You can install the package via composer:
 composer require 42coders/workflows
 ```
 
+Notes to the Early Access Users. You have to manually clone the Package to a folder inside of the Project you want
+to use the Package in or next to it.
+
+After you have clonded it locally you need to add it to Projects composer.json file.
+
+First you need to set the local repository. 
+In the example the Package is in the subfolder of the same parent folder as the Project is.
+
+```json
+"repositories": [
+    {
+        "type": "path",
+        "url": "../packages/workflows"
+    }
+],
+```
+
+The next step is to register it as a dependency. To do so add it to the required Packages.
+
+```json
+"the42coders/workflows": "*"
+``` 
+
+You need to register the routes to your web.php routes File as well.
+
+```php
+\the42coders\Workflows\Workflows::routes();
+```
+
+You need to publish the assets of the Package
+
+```bash
+php artisan vendor:publish --provider="the42coders\Workflows\WorkflowsServiceProvider"  --tag=assets  
+```
+
+Other publishable Contents are
+
+config
+
+```bash
+php artisan vendor:publish --provider="the42coders\Workflows\WorkflowsServiceProvider"  --tag=config  
+```
+
+language
+
+```bash
+php artisan vendor:publish --provider="the42coders\Workflows\WorkflowsServiceProvider"  --tag=lang  
+```
+
+views
+
+```bash
+php artisan vendor:publish --provider="the42coders\Workflows\WorkflowsServiceProvider"  --tag=views  
+```
+
 ## Usage
 
 The Workflow Package is working out of the Box in your Laravel application. Just go to the route /workflows 
