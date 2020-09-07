@@ -17,7 +17,7 @@
                    </div>
                    </div>
                    <div class="col-md-12 text-right">
-                   <a href="/workflow" class="btn btn-warning">{{ __('workflows::workflows.Cancel')}}</a>
+                   <a href="{{config('workflows.prefix')}}/workflows" class="btn btn-warning">{{ __('workflows::workflows.Cancel')}}</a>
                    <button type="submit" class="btn btn-success">{{ __('workflows::workflows.Save')}}</button>
                    </div>
                </form>

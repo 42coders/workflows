@@ -3,6 +3,7 @@
 namespace the42coders\Workflows;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class WorkflowsServiceProvider extends ServiceProvider
 {
@@ -14,10 +15,10 @@ class WorkflowsServiceProvider extends ServiceProvider
         /*
          * Optional methods to load your package assets
          */
-         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'workflows');
-         $this->loadViewsFrom(__DIR__.'/../resources/views', 'workflows');
-         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-         $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'workflows');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'workflows');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->registerRoutes();
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -26,26 +27,42 @@ class WorkflowsServiceProvider extends ServiceProvider
 
             // Publishing the views.
             $this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/workflows'),
+                __DIR__ . '/../resources/views' => resource_path('views/vendor/workflows'),
             ], 'views');
 
             // Publishing assets.
             $this->publishes([
-                __DIR__.'/../public/css' => public_path('vendor/workflows/css'),
-                __DIR__.'/../public/js' => public_path('vendor/workflows/js'),
-                __DIR__.'/../resources/img' => public_path('vendor/workflows/img'),
+                __DIR__ . '/../public/css' => public_path('vendor/workflows/css'),
+                __DIR__ . '/../public/js' => public_path('vendor/workflows/js'),
+                __DIR__ . '/../resources/img' => public_path('vendor/workflows/img'),
                 //TODO: super hacky to copy it over to public/fonts but have not found a better solution by now.
-                __DIR__.'/../public/fonts' => public_path('public/fonts'),
+                __DIR__ . '/../public/fonts' => public_path('public/fonts'),
             ], 'assets');
 
             // Publishing the translation files.
             $this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/workflows'),
+                __DIR__ . '/../resources/lang' => resource_path('lang/vendor/workflows'),
             ], 'lang');
 
             // Registering package commands.
             // $this->commands([]);
         }
+    }
+
+    protected function registerRoutes()
+    {
+        Route::group($this->routeConfiguration(), function () {
+            $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+            //$this->loadRoutesFrom(__DIR__.'/routes.php');
+        });
+    }
+
+    protected function routeConfiguration()
+    {
+        return [
+            'prefix' => config('workflows.prefix'),
+            'middleware' => config('workflows.middleware'),
+        ];
     }
 
     /**

@@ -38987,8 +38987,7 @@ $.ajaxSetup({
   headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
   }
-}); //window.queryBuilder = require('jQuery-QueryBuilder/dist/js/query-builder.standalone');
-
+});
 
 window.queryBuilder = jQuery_QueryBuilder_dist_js_query_builder_standalone__WEBPACK_IMPORTED_MODULE_0___default.a;
 

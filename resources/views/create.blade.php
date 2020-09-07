@@ -10,14 +10,14 @@
 
         <div class="row">
             <div class="col-md-12">
-               <form action="/workflow/store" method="POST">
+               <form action="{{config('workflows.prefix')}}/workflows/store" method="POST">
                    <div class="col-md-12">
                    <div class="form-group">
                        <input type="text" class="form-control" id="name" name="name" aria-describedby="Name" placeholder="Name">
                    </div>
                    </div>
                    <div class="col-md-12 text-right">
-                   <a href="/workflow" class="btn btn-warning">{{ __('workflows::workflows.Cancel')}}</a>
+                   <a href="{{config('workflows.prefix')}}/workflows" class="btn btn-warning">{{ __('workflows::workflows.Cancel')}}</a>
                    <button type="submit" class="btn btn-success">{{ __('workflows::workflows.Save')}}</button>
                    </div>
                </form>

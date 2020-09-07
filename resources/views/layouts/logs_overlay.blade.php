@@ -54,7 +54,7 @@
     function reRun(id){
         $.ajax({
             type: "POST",
-            url: "/workflow/reRun/"+id,
+            url: "{{config('workflows.prefix')}}/workflows/logs/reRun/"+id,
             dataType: "json",
             success: function (data) {
                 console.log(data);

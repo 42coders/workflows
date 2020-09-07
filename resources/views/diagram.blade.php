@@ -45,7 +45,7 @@
 <body>
 <header>
     <div style="width: 250px; ">
-        <a href="/workflow"><img src="{{ asset('vendor/workflows/img/42workflows.png') }}" class="img-fluid"/></a>
+        <a href="{{config('workflows.prefix')}}/workflow"><img src="{{ asset('vendor/workflows/img/42workflows.png') }}" class="img-fluid"/></a>
     </div>
 </header>
 <div class="wrapper">
@@ -112,7 +112,7 @@
         //var field_name = $(element).attr('name');
         $.ajax({
             type: "POST",
-            url: "/workflow/{{$workflow->id}}/loadResourceIntelligence",
+            url: "{{config('workflows.prefix')}}/workflows/settings/{{$workflow->id}}/loadResourceIntelligence",
             dataType: 'json',
             data: {
                 'resource': resource,
@@ -136,7 +136,7 @@
         console.log(data);
         $.ajax({
             type: "POST",
-            url: "/workflow/{{$workflow->id}}/changeConditions",
+            url: "{{config('workflows.prefix')}}/workflows/settings/{{$workflow->id}}/changeConditions",
             dataType: 'text',
             data: {
                 'data': data,
@@ -162,7 +162,7 @@
         console.log(data);
         $.ajax({
             type: "POST",
-            url: "/workflow/{{$workflow->id}}/changeValues",
+            url: "{{config('workflows.prefix')}}/workflows/settings/{{$workflow->id}}/changeValues",
             dataType: 'text',
             data: {
                 'data': data,
@@ -199,7 +199,7 @@
             case 'task':
                 $.ajax({
                     type: "POST",
-                    url: "/workflow/{{$workflow->id}}/addTask",
+                    url: "{{config('workflows.prefix')}}/workflows/diagram/{{$workflow->id}}/addTask",
                     data: node,
                     dataType: "json",
                     success: function (data) {
@@ -213,7 +213,7 @@
             case 'trigger':
                 $.ajax({
                     type: "POST",
-                    url: "/workflow/{{$workflow->id}}/addTrigger",
+                    url: "{{config('workflows.prefix')}}/workflows/diagram/{{$workflow->id}}/addTrigger",
                     data: node,
                     dataType: "json",
                     success: function (data) {
@@ -230,7 +230,7 @@
         var node = editor.getNode(id);
         $.ajax({
             type: "POST",
-            url: "/workflow/{{$workflow->id}}/removeTask",
+            url: "{{config('workflows.prefix')}}/workflows/diagram/{{$workflow->id}}/removeTask",
             data: {
                 node: node
             },
@@ -248,7 +248,7 @@
         console.log(node);
         $.ajax({
             type: "POST",
-            url: "/workflow/{{$workflow->id}}/updateNodePosition",
+            url: "{{config('workflows.prefix')}}/workflows/diagram/{{$workflow->id}}/updateNodePosition",
             data: {
                 node: node
             },
@@ -281,7 +281,7 @@
         $outputNode = editor.getNode(connection.ouput_id);
         $.ajax({
             type: "POST",
-            url: "/workflow/{{$workflow->id}}/addConnection",
+            url: "{{config('workflows.prefix')}}/workflows/diagram/{{$workflow->id}}/addConnection",
             data: {
                 'parent_element': $outputNode,
                 'child_element': $inputNode,
@@ -299,7 +299,7 @@
     editor.on('connectionRemoved', function (connection) {
         $.ajax({
             type: "POST",
-            url: "/workflow/{{$workflow->id}}/removeConnection",
+            url: "{{config('workflows.prefix')}}/workflows/diagram/{{$workflow->id}}/removeConnection",
             data: connection,
             dataType: "json",
             success: function (data) {
@@ -455,7 +455,7 @@
     function loadLogs() {
         $.ajax({
             type: "POST",
-            url: "/workflow/{{$workflow->id}}/getLogs",
+            url: "{{config('workflows.prefix')}}/workflows/logs/{{$workflow->id}}/getLogs",
             data: {},
             dataType: "text",
             success: function (data) {
@@ -479,7 +479,7 @@
 
         $.ajax({
             type: "POST",
-            url: "/workflow/{{$workflow->id}}/getElementSettings",
+            url: "{{config('workflows.prefix')}}/workflows/settings/{{$workflow->id}}/getElementSettings",
             data: {
                 type: type,
                 element_id: element_id,
@@ -506,7 +506,7 @@
 
         $.ajax({
             type: "POST",
-            url: "/workflow/{{$workflow->id}}/getElementConditions",
+            url: "{{config('workflows.prefix')}}/workflows/settings/{{$workflow->id}}/getElementConditions",
             data: {
                 type: type,
                 element_id: element_id,
