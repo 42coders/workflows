@@ -13,7 +13,7 @@ class CreateWorkflowLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('workflow_logs', function (Blueprint $table) {
+        Schema::create(config('workflows.db_prefix').'workflow_logs', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('workflow_id');
             $table->bigInteger('elementable_id')->nullable()->index();

@@ -13,7 +13,7 @@ class CreateTaskLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('task_logs', function (Blueprint $table) {
+        Schema::create(config('workflows.db_prefix').'task_logs', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('workflow_log_id');
             $table->bigInteger('task_id');

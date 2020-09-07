@@ -106,4 +106,16 @@ return [
     | using them as described in the Documentation because you should put a Auth middleware on them.
     */
     'prefix' => '',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Database prefixing
+    |--------------------------------------------------------------------------
+    |
+    | We know how annoying it can be if a package brings a table name into your system which you are even worse another
+    | package all ready uses. With the db_prefix you can set a prefix to the tables to avoid this conflict.
+    | This changes needs to be done before the Migrations are running.
+    */
+    'db_prefix' => '',
+
 ];

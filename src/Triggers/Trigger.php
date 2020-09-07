@@ -48,6 +48,12 @@ class Trigger extends Model
         'Description' => 'description',
     ];
 
+    function __construct(array $attributes = [])
+    {
+        $this->table = config('workflows.db_prefix').$this->table;
+        parent::__construct($attributes);
+    }
+
     public function children(){
         return $this->morphMany('the42coders\Workflows\Tasks\Task', 'parentable');
     }

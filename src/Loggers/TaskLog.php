@@ -24,6 +24,12 @@ class TaskLog extends Model
         'end',
     ];
 
+    function __construct(array $attributes = [])
+    {
+        $this->table = config('workflows.db_prefix').$this->table;
+        parent::__construct($attributes);
+    }
+
     static function createHelper(int $workflow_log_id, int $task_id, string $task_name, string $status = null, string $message = '', $start = null, $end = null): TaskLog
     {
 

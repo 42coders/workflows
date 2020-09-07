@@ -37,6 +37,12 @@ class WorkflowLog extends Model
         'triggerable_type',
     ];
 
+    function __construct(array $attributes = [])
+    {
+        $this->table = config('workflows.db_prefix').$this->table;
+        parent::__construct($attributes);
+    }
+
     public function workflow(){
         return $this->belongsTo('the42coders\Workflows\Workflow');
     }

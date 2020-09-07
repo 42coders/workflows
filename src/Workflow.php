@@ -16,12 +16,15 @@ class Workflow extends Model
 
     private DataBus $data;
 
+    protected $table = 'workflows';
+
     protected $fillable = [
         'name',
     ];
 
     function __construct(array $attributes = [])
     {
+        $this->table = config('workflows.db_prefix').$this->table;
         parent::__construct($attributes);
     }
 

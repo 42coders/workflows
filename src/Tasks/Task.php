@@ -51,6 +51,12 @@ class Task extends Model implements TaskInterface
     public static array $fields = [];
     public static array $output = [];
 
+    function __construct(array $attributes = [])
+    {
+        $this->table = config('workflows.db_prefix').$this->table;
+        parent::__construct($attributes);
+    }
+
     public function workflows()
     {
         return $this->belongsToMany('the42coders\Workflows\Workflow');

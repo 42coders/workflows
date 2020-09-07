@@ -13,7 +13,7 @@ class CreateTriggersTable extends Migration
      */
     public function up()
     {
-        Schema::create('triggers', function (Blueprint $table) {
+        Schema::create(config('workflows.db_prefix').'triggers', function (Blueprint $table) {
             $table->id();
             $table->string('type');
             $table->string('name');

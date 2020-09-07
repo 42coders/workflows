@@ -13,7 +13,7 @@ class CreateWorkflowsTable extends Migration
      */
     public function up()
     {
-        Schema::create('workflows', function (Blueprint $table) {
+        Schema::create(config('workflows.db_prefix').'workflows', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();

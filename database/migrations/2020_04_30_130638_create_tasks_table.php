@@ -13,7 +13,7 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create(config('workflows.db_prefix').'tasks', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('workflow_id')->index();
             $table->bigInteger('parentable_id')->nullable()->index();
