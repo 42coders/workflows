@@ -35,7 +35,7 @@ class ModelResource implements Resource
         return $variables;
     }
 
-    public static function checkCondition(Model $element, String $field, String $operator, String $value)
+    public static function checkCondition(Model $element, DataBus $dataBus, String $field, String $operator, String $value)
     {
         switch($operator){
             case 'equal':

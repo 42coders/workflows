@@ -15,6 +15,18 @@ class DataBusResource implements Resource
 
     }
 
+    public static function checkCondition(Model $element, DataBus $dataBus, String $field, String $operator, String $value)
+    {
+        switch($operator){
+            case 'equal':
+                return $dataBus->data[$dataBus->data[$field]] == $value;
+            case 'not_equal':
+                return $dataBus->data[$dataBus->data[$field]] != $value;
+            default:
+                return true;
+        }
+    }
+
     public static function getValues(Model $element, $value, $field)
     {
         return $element->getParentDataBusKeys();

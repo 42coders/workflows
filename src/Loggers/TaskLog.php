@@ -10,6 +10,8 @@ use Illuminate\Support\Carbon;
 class TaskLog extends Model
 {
 
+    protected $table = 'task_logs';
+
     static string $STATUS_START = 'start';
     static string $STATUS_FINISHED = 'finished';
     static string $STATUS_ERROR = 'error';

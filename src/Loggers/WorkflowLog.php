@@ -14,11 +14,14 @@ class WorkflowLog extends Model
 
     use WorkflowObservable;
 
+    protected $table = 'workflow_logs';
+
     static string $STATUS_START = 'start';
     static string $STATUS_FINISHED = 'finished';
     static string $STATUS_ERROR = 'error';
 
     private $taskLogs = [];
+
 
     protected $dates = [
         'start',

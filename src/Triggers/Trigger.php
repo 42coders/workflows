@@ -89,7 +89,6 @@ class Trigger extends Model
 
         $log = WorkflowLog::createHelper($this->workflow, $model, $this);
         $dataBus = new DataBus($data);
-
         ProcessWorkflow::dispatch($model, $dataBus, $this, $log);
     }
 

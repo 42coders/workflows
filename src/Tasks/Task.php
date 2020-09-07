@@ -109,19 +109,23 @@ class Task extends Model implements TaskInterface
      */
     public function checkConditions(Model $model, DataBus $data): bool
     {
-
         //TODO: This needs to get smoother :(
 
+        if(empty($this->conditions)){
+            return true;
+        }
+
         $conditions = json_decode($this->conditions);
+
         foreach($conditions->rules as $rule){
             $ruleDetails = explode('-',$rule->id);
             $DataBus = $ruleDetails[0];
             $field = $ruleDetails[1];
 
-            $result = config('workflows.data_resources')[$DataBus]::checkCondition($this, $field, $rule->operator, $rule->value);
+            $result = config('workflows.data_resources')[$DataBus]::checkCondition($this, $data, $field, $rule->operator, $rule->value);
 
             if(!$result){
-                return false;
+                throw new \Exception('The Condition for Task '.$this->name.' with the field '.$rule->field.' '.$rule->operator.' '.$rule->value.' failed.');
             }
 
         }
@@ -138,6 +142,13 @@ class Task extends Model implements TaskInterface
         $this->log = TaskLog::createHelper($log->id, $this->id, $this->name);
 
         $this->dataBus->collectData($model, $this->data_fields);
+
+        try {
+            $this->checkConditions($this->model, $this->dataBus);
+        } catch (ConditionFailedError $e) {
+            throw $e;
+        }
+
     }
 
     /**
