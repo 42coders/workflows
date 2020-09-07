@@ -1,8 +1,5 @@
 <?php
 
-/*
- * You can place your custom package configuration in here.
- */
 return [
 
     /*
@@ -109,5 +106,4 @@ return [
     | using them as described in the Documentation because you should put a Auth middleware on them.
     */
     'prefix' => '',
-    'middleware' => ['web'],
 ];
