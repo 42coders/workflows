@@ -57,9 +57,9 @@ class Task extends Model implements TaskInterface
         parent::__construct($attributes);
     }
 
-    public function workflows()
+    public function workflow()
     {
-        return $this->belongsToMany('the42coders\Workflows\Workflow');
+        return $this->belongsTo('the42coders\Workflows\Workflow');
     }
 
     public function getFields(){

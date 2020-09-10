@@ -18,6 +18,18 @@ class ValueResource implements Resource
         return [];
     }
 
+    public static function checkCondition(Model $element, DataBus $dataBus, String $field, String $operator, String $value)
+    {
+        switch($operator){
+            case 'equal':
+                return $dataBus->get($field) == $value;
+            case 'not_equal':
+                return $dataBus->get($field) != $value;
+            default:
+                return true;
+        }
+    }
+
     public static function loadResourceIntelligence(Model $element, $value, $field)
     {
 

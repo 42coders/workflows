@@ -36,23 +36,8 @@ class Workflow extends Model
         return $this->hasMany('the42coders\Workflows\Triggers\Trigger');
     }
 
-    public function conditions(){
-        return $this->belongsToMany('the42coders\Workflows\Conditions\Condition');
-    }
-
     public function logs(){
         return $this->hasMany('the42coders\Workflows\Loggers\WorkflowLog');
-    }
-
-    /**
-     * Run all Actions Attached to this ActionContainer checks first about his  Conditions and then each Action checks its own Conditions
-     *
-     * @param Model $model
-     * @param array $data
-     */
-    public function handle(Model $model, array $data = [])
-    {
-
     }
 
 

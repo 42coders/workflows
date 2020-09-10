@@ -20,8 +20,7 @@ class WorkflowLog extends Model
     static string $STATUS_FINISHED = 'finished';
     static string $STATUS_ERROR = 'error';
 
-    private $taskLogs = [];
-
+    private $taskLogsArray = [];
 
     protected $dates = [
         'start',
@@ -95,7 +94,7 @@ class WorkflowLog extends Model
 
     public function addTaskLog(int $workflow_log_id, int $task_id, string $task_name, string $status, string $message, $start, $end = null)
     {
-        $this->taskLogs[$task_id] = [
+        $this->taskLogsArray[$task_id] = [
             'workflow_log_id' => $workflow_log_id,
             'task_id' => $task_id,
             'task_name' => $task_name,
@@ -108,14 +107,14 @@ class WorkflowLog extends Model
 
     public function updateTaskLog(int $task_id, string $message, string $status, \DateTime $end)
     {
-        $this->taskLogs[$task_id]['message'] = $message;
-        $this->taskLogs[$task_id]['status'] = $status;
-        $this->taskLogs[$task_id]['end'] = $end;
+        $this->taskLogsArray[$task_id]['message'] = $message;
+        $this->taskLogsArray[$task_id]['status'] = $status;
+        $this->taskLogsArray[$task_id]['end'] = $end;
     }
 
     public function createTaskLogsFromMemory()
     {
-        foreach ($this->taskLogs as $taskLog) {
+        foreach ($this->taskLogsArray as $taskLog) {
             TaskLog::updateOrCreate(
                 [
                     'workflow_log_id' => $taskLog['workflow_log_id'],

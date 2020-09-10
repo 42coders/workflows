@@ -10,7 +10,8 @@ use the42coders\Workflows\Triggers\ReRunTrigger;
 use the42coders\Workflows\Triggers\Trigger;
 use the42coders\Workflows\Workflow;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+//use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 
 class WorkflowController extends Controller
 {

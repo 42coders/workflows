@@ -4,3 +4,5 @@ docs
 coverage
 .idea
 node_modules
+vendor
+

@@ -2,8 +2,10 @@
 
 namespace the42coders\Workflows;
 
+use Dompdf\Dompdf;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
 
 class WorkflowsServiceProvider extends ServiceProvider
 {
@@ -60,5 +62,9 @@ class WorkflowsServiceProvider extends ServiceProvider
         $this->app->singleton('workflows', function () {
             return new Workflows;
         });
+
+        App::register(\Barryvdh\DomPDF\ServiceProvider::class);
+        //App::register(\Guzz)
+
     }
 }

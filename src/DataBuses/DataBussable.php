@@ -36,13 +36,14 @@ trait DataBussable
         return $this->dataBus->get($value, $default);
     }
 
-    public function setDataCollection(string $key, $value)
+    public function setDataArray(string $key, $value)
     {
-        return $this->dataBus->setOutputCollection($key, $value);
+        return $this->dataBus->setOutputArray($key, $value);
     }
 
     public function setData(string $key, $value)
     {
         return $this->dataBus->setOutput($key, $value);
     }
+
 }

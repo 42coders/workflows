@@ -30,9 +30,11 @@ class SendMail extends Task
                 ->to($dataBus->get('recipients'))
                 ->from($dataBus->get('sender'));
             $counter = 1;
-            foreach($dataBus->get('files') as $file){
-                $message->attachData($file, 'Datei_'.$counter);
-                $counter++;
+            if(is_array($dataBus->get('files'))) {
+                foreach ($dataBus->get('files') as $file) {
+                    $message->attachData($file, 'Datei_' . $counter);
+                    $counter++;
+                }
             }
         });
 

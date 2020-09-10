@@ -47,7 +47,7 @@ class DataBus
         $this->data[$this->get($key, $key)] = $value;
     }
 
-    public function setOutputCollection(string $key, string $value)
+    public function setOutputArray(string $key, string $value)
     {
         $this->data[$this->get($key, $key)][] = $value;
     }
