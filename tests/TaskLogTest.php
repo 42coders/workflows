@@ -15,7 +15,7 @@ class TaskLogTest extends TestCase
         $taskLogCreated = TaskLog::createHelper(
             1, //workflow_log_id
             1, //task_id
-            'test', //task_name
+            'test' //task_name
         );
         $this->assertSame($taskLogCreated->workflow_log_id, 1);
         $this->assertSame($taskLogCreated->status, TaskLog::$STATUS_START);
@@ -27,7 +27,7 @@ class TaskLogTest extends TestCase
         $taskLogCreated = TaskLog::createHelper(
             1, //workflow_log_id
             1, //task_id
-            'test', //task_name
+            'test' //task_name
         );
 
         $taskLogCreated->setError('This is an Error');
@@ -42,7 +42,7 @@ class TaskLogTest extends TestCase
         $taskLogCreated = TaskLog::createHelper(
             1, //workflow_log_id
             1, //task_id
-            'test', //task_name
+            'test' //task_name
         );
 
         $taskLogCreated->finish();
