@@ -1,9 +1,9 @@
-# Very short description of the package
+#Workflows add Drag & Drop automation's to your Laravel application.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/the42coders/workflows.svg?style=flat-square)](https://packagist.org/packages/the42coders/workflows)
 [![Build Status](https://img.shields.io/travis/42coders/workflows/master.svg?style=flat-square)](https://travis-ci.org/42coders/workflows)
 [![Quality Score](https://github.styleci.io/repos/295739465/shield)](https://github.styleci.io/repos/295739465/shield)
-[![Total Downloads](https://img.shields.io/packagist/dt/42coders/workflows.svg?style=flat-square)](https://packagist.org/packages/42coders/workflows)
+[![Total Downloads](https://img.shields.io/packagist/dt/the2coders/workflows.svg?style=flat-square)](https://packagist.org/packages/the42coders/workflows)
 
 The Workflow Package add Drag & Drop Workflows to your Laravel Application. A Workflow consists of a Triggers and Tasks.
 The Trigger is responsible for starting a Workflow. The Tasks are single nodes of code execution. The package comes
