@@ -20,29 +20,6 @@ You can install the package via composer:
 composer require 42coders/workflows
 ```
 
-Notes to the Early Access Users. You have to manually clone the Package to a folder inside of the Project you want
-to use the Package in or next to it.
-
-After you have clonded it locally you need to add it to Projects composer.json file.
-
-First you need to set the local repository. 
-In the example the Package is in the subfolder of the same parent folder as the Project is.
-
-```json
-"repositories": [
-    {
-        "type": "path",
-        "url": "../packages/workflows"
-    }
-],
-```
-
-The next step is to register it as a dependency. To do so add it to the required Packages.
-
-```json
-"the42coders/workflows": "*"
-``` 
-
 You need to register the routes to your web.php routes File as well.
 
 ```php
