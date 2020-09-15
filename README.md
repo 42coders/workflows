@@ -1,6 +1,6 @@
 # Very short description of the package
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/42coders/workflows.svg?style=flat-square)](https://packagist.org/packages/42coders/workflows)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/the42coders/workflows.svg?style=flat-square)](https://packagist.org/packages/the42coders/workflows)
 [![Build Status](https://img.shields.io/travis/42coders/workflows/master.svg?style=flat-square)](https://travis-ci.org/42coders/workflows)
 [![Quality Score](https://img.shields.io/scrutinizer/g/42coders/workflows.svg?style=flat-square)](https://scrutinizer-ci.com/g/42coders/workflows)
 [![Total Downloads](https://img.shields.io/packagist/dt/42coders/workflows.svg?style=flat-square)](https://packagist.org/packages/42coders/workflows)

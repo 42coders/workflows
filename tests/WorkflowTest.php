@@ -55,7 +55,7 @@ class WorkflowTest extends TestCase
         $logCreated = WorkflowLog::createHelper(
             $workflow,
             $workflow,
-            $trigger,
+            $trigger
         );
 
         return $workflow;

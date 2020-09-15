@@ -19,7 +19,7 @@ use the42coders\Workflows\Triggers\ObserverTrigger;
 use the42coders\Workflows\Workflow;
 use the42coders\Workflows\Workflows;
 
-class TaskTest extends TestCase
+class TasksTest extends TestCase
 {
 
     private function createBaseSetupForTasks()
@@ -100,7 +100,7 @@ class TaskTest extends TestCase
         $logCreated = WorkflowLog::createHelper(
             $workflow,
             $workflow,
-            $trigger,
+            $trigger
         );
 
         return $workflow;

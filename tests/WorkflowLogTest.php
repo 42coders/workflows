@@ -26,7 +26,7 @@ class WorkflowLogTest extends TestCase
         return WorkflowLog::createHelper(
             $workflow,
             $model,
-            $trigger,
+            $trigger
         );
     }
 
