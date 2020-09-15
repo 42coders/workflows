@@ -1,10 +1,7 @@
 <?php
 
-
 namespace the42coders\Workflows\Tests;
 
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Config;
 use the42coders\Workflows\DataBuses\DataBus;
 use the42coders\Workflows\Loggers\WorkflowLog;
@@ -17,11 +14,9 @@ use the42coders\Workflows\Tasks\SendMail;
 use the42coders\Workflows\Tasks\Task;
 use the42coders\Workflows\Triggers\ObserverTrigger;
 use the42coders\Workflows\Workflow;
-use the42coders\Workflows\Workflows;
 
 class TasksTest extends TestCase
 {
-
     private function createBaseSetupForTasks()
     {
         $workflow = Workflow::create(['name' => 'TestWorkflow']);
@@ -109,40 +104,36 @@ class TasksTest extends TestCase
     /** @test */
     public function TaskHaveParent()
     {
-
         $workflow = $this->createBaseSetupForTasks();
 
         $task = $workflow->tasks->first();
 
-        $this->assertTrue(!empty($task->parentable));
+        $this->assertTrue(! empty($task->parentable));
     }
 
     /** @test */
     public function TaskHaveChildren()
     {
-
         $workflow = $this->createBaseSetupForTasks();
 
         $task = $workflow->tasks->first();
 
-        $this->assertTrue(!empty($task->children));
+        $this->assertTrue(! empty($task->children));
     }
 
     /** @test */
     public function TaskHaveWorkflow()
     {
-
         $workflow = $this->createBaseSetupForTasks();
 
         $task = $workflow->tasks->first();
 
-        $this->assertTrue(!empty($task->workflow));
+        $this->assertTrue(! empty($task->workflow));
     }
 
     /** @test */
     public function TaskEmtpyConditionsCheckIsTrue()
     {
-
         $task = new Task();
 
         $this->assertTrue($task->checkConditions($task, new DataBus([])));
@@ -151,7 +142,6 @@ class TasksTest extends TestCase
     /** @test */
     public function TaskConditionsCheckIsTrue()
     {
-
         $task = new Task();
         $task->conditions = '{
 	"rules": [
@@ -174,7 +164,6 @@ class TasksTest extends TestCase
     /** @test */
     public function TaskConditionsCheckIsThrowingAnError()
     {
-
         $task = new Task();
         $task->conditions = '{
 	"rules": [
@@ -197,7 +186,6 @@ class TasksTest extends TestCase
     /** @test */
     public function TaskSettingsCanBeLoaded()
     {
-
         $task = new Task();
 
         $this->assertStringContainsString(__('workflows::workflows.Settings'), $task->getSettings());
@@ -206,7 +194,6 @@ class TasksTest extends TestCase
     /** @test */
     public function TaskSendMail()
     {
-
         Config::set('mail.default', 'log');
 
         $task = new SendMail();
@@ -228,7 +215,6 @@ class TasksTest extends TestCase
     /** @test */
     public function TaskDomPDF()
     {
-
         $task = new DomPDF();
 
         $dataBus = new DataBus([
@@ -245,7 +231,6 @@ class TasksTest extends TestCase
     /** @test */
     public function TaskExecute()
     {
-
         $task = new Execute();
 
         $dataBus = new DataBus([
@@ -262,7 +247,6 @@ class TasksTest extends TestCase
     /** @test */
     public function HtmlInput()
     {
-
         $task = new HtmlInput();
 
         $dataBus = new DataBus([
@@ -274,13 +258,12 @@ class TasksTest extends TestCase
         $task->inputFields();
         $task->execute();
 
-        $this->assertSame($task->getData('html_output'), "<h1>test 1234</h1>");
+        $this->assertSame($task->getData('html_output'), '<h1>test 1234</h1>');
     }
 
     /** @test */
     public function HttpStatus()
     {
-
         $task = new HttpStatus();
 
         $dataBus = new DataBus([
@@ -291,13 +274,12 @@ class TasksTest extends TestCase
 
         $task->execute();
 
-        $this->assertSame($task->getData('http_status'), "200");
+        $this->assertSame($task->getData('http_status'), '200');
     }
 
     /** @test */
     public function PregReplace()
     {
-
         $task = new PregReplace();
 
         $dataBus = new DataBus([
@@ -310,7 +292,6 @@ class TasksTest extends TestCase
 
         $task->execute();
 
-        $this->assertSame($task->getData('preg_replace_output'), "42coders");
+        $this->assertSame($task->getData('preg_replace_output'), '42coders');
     }
-
 }

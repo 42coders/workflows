@@ -1,25 +1,18 @@
 <?php
 
-
 namespace the42coders\Workflows\Tests;
 
 use  Illuminate\Http\Request;
-use Illuminate\Routing\Route;
 use Illuminate\View\View;
-use the42coders\Workflows\Loggers\WorkflowLog;
 use the42coders\Workflows\Tasks\SendMail;
 use the42coders\Workflows\Tasks\Task;
-use the42coders\Workflows\Triggers\ObserverTrigger;
 use the42coders\Workflows\Workflow;
-use the42coders\Workflows\Workflows;
 
 class WorkflowControllerTest extends TestCase
 {
-
     /** @test */
     public function WorkflowControllerIndex()
     {
-
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();
 
         $this->assertTrue($workflowController->index() instanceof View);
@@ -28,7 +21,6 @@ class WorkflowControllerTest extends TestCase
     /** @test */
     public function WorkflowControllerShow()
     {
-
         $workflow = Workflow::create(['name' => 'test']);
 
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();
@@ -39,7 +31,6 @@ class WorkflowControllerTest extends TestCase
     /** @test */
     public function WorkflowControllerCreate()
     {
-
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();
 
         $this->assertTrue($workflowController->create() instanceof View);
@@ -60,7 +51,6 @@ class WorkflowControllerTest extends TestCase
     /** @test */
     public function WorkflowControllerEdit()
     {
-
         $workflow = Workflow::create(['name' => 'test']);
 
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();
@@ -71,7 +61,6 @@ class WorkflowControllerTest extends TestCase
     /** @test */
     public function WorkflowControllerUpdate()
     {
-
         $workflow = Workflow::create(['name' => 'test']);
 
         $request = new Request(['name' => 'test_new']);
@@ -86,7 +75,6 @@ class WorkflowControllerTest extends TestCase
     /** @test */
     public function WorkflowControllerDelete()
     {
-
         $workflow = Workflow::create(['name' => 'test']);
 
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();
@@ -99,7 +87,6 @@ class WorkflowControllerTest extends TestCase
     /** @test */
     public function WorkflowControllerAddNewTask()
     {
-
         $workflow = Workflow::create(['name' => 'test']);
 
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();
@@ -120,7 +107,6 @@ class WorkflowControllerTest extends TestCase
     /** @test */
     public function WorkflowControllerAddNewTaskDataIsTrigger()
     {
-
         $workflow = Workflow::create(['name' => 'test']);
 
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();
@@ -141,7 +127,6 @@ class WorkflowControllerTest extends TestCase
     /** @test */
     public function WorkflowControllerAddNewTaskAllreadyExisting()
     {
-
         $workflow = Workflow::create(['name' => 'test']);
 
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();
@@ -172,7 +157,6 @@ class WorkflowControllerTest extends TestCase
     /** @test */
     public function WorkflowControllerAddNewTrigger()
     {
-
         $workflow = Workflow::create(['name' => 'test']);
 
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();
@@ -193,7 +177,6 @@ class WorkflowControllerTest extends TestCase
     /** @test */
     public function WorkflowChangeConditions()
     {
-
         $workflow = Workflow::create(['name' => 'test']);
 
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();
@@ -222,7 +205,6 @@ class WorkflowControllerTest extends TestCase
     /** @test */
     public function WorkflowChangeValue()
     {
-
         $workflow = Workflow::create(['name' => 'test']);
 
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();
@@ -251,7 +233,6 @@ class WorkflowControllerTest extends TestCase
     /** @test */
     public function WorkflowUpdateNodePosition()
     {
-
         $workflow = Workflow::create(['name' => 'test']);
 
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();
@@ -290,7 +271,6 @@ class WorkflowControllerTest extends TestCase
     /** @test */
     public function WorkflowAddConnectionAndRemoveConnection()
     {
-
         $workflow = Workflow::create(['name' => 'test']);
 
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();
@@ -337,7 +317,7 @@ class WorkflowControllerTest extends TestCase
         $this->assertNotTrue(empty($childElement));
 
         $request2 = new Request([
-           'input_id' => '11',
+            'input_id' => '11',
         ]);
 
         $response2 = $workflowController->removeConnection($workflow->id, $request2);
@@ -352,7 +332,6 @@ class WorkflowControllerTest extends TestCase
     /** @test */
     public function WorkflowRemoveTask()
     {
-
         $workflow = Workflow::create(['name' => 'test']);
 
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();
@@ -386,13 +365,11 @@ class WorkflowControllerTest extends TestCase
         $deletedTask = Task::where('id', $task->id)->first();
 
         $this->assertTrue(empty($deletedTask));
-
     }
 
     /** @test */
     public function WorkflowControllerGetElementSettings()
     {
-
         $workflow = Workflow::create(['name' => 'test']);
 
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();
@@ -411,7 +388,6 @@ class WorkflowControllerTest extends TestCase
             'type' => 'task',
             'element_id' => $task->id,
         ]);
-
 
         $this->assertTrue($workflowController->getElementSettings($workflow->id, $request) instanceof View);
     }
@@ -419,7 +395,6 @@ class WorkflowControllerTest extends TestCase
     /** @test */
     public function WorkflowControllerGetElementConditions()
     {
-
         $workflow = Workflow::create(['name' => 'test']);
 
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();
@@ -439,13 +414,11 @@ class WorkflowControllerTest extends TestCase
             'element_id' => $task->id,
         ]);
 
-
         $this->assertTrue($workflowController->getElementConditions($workflow->id, $request) instanceof View);
     }
 
     public function WorkflowControllerLoadResourceintelligence()
     {
-
         $workflow = Workflow::create(['name' => 'test']);
 
         $workflowController = new \the42coders\Workflows\Http\Controllers\WorkflowController();

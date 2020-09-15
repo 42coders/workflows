@@ -1,14 +1,11 @@
 <?php
 
-
 namespace the42coders\Workflows\Tasks;
 
-
-use Carbon\Carbon;
-use the42coders\Workflows\DataBuses\DataBus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use the42coders\Workflows\DataBuses\DataBus;
 use the42coders\Workflows\DataBuses\DataBussable;
 use the42coders\Workflows\Fields\Fieldable;
 use the42coders\Workflows\Loggers\TaskLog;
@@ -16,7 +13,6 @@ use the42coders\Workflows\Loggers\WorkflowLog;
 
 class Task extends Model implements TaskInterface
 {
-
     use DataBussable, Fieldable;
 
     protected $table = 'tasks';
@@ -51,7 +47,7 @@ class Task extends Model implements TaskInterface
     public static $fields = [];
     public static $output = [];
 
-    function __construct(array $attributes = [])
+    public function __construct(array $attributes = [])
     {
         $this->table = config('workflows.db_prefix').$this->table;
         parent::__construct($attributes);
@@ -62,15 +58,18 @@ class Task extends Model implements TaskInterface
         return $this->belongsTo('the42coders\Workflows\Workflow');
     }
 
-    public function getFields(){
+    public function getFields()
+    {
         return $this->fields;
     }
 
-    public function parentable(){
+    public function parentable()
+    {
         return $this->morphTo();
     }
 
-    public function children(){
+    public function children()
+    {
         return $this->morphMany('the42coders\Workflows\Tasks\Task', 'parentable');
     }
 
@@ -102,7 +101,7 @@ class Task extends Model implements TaskInterface
     }
 
     /**
-     * Check if all Conditions for this Action pass
+     * Check if all Conditions for this Action pass.
      *
      * @param Model $model
      * @return bool
@@ -111,29 +110,29 @@ class Task extends Model implements TaskInterface
     {
         //TODO: This needs to get smoother :(
 
-        if(empty($this->conditions)){
+        if (empty($this->conditions)) {
             return true;
         }
 
         $conditions = json_decode($this->conditions);
 
-        foreach($conditions->rules as $rule){
-            $ruleDetails = explode('-',$rule->id);
+        foreach ($conditions->rules as $rule) {
+            $ruleDetails = explode('-', $rule->id);
             $DataBus = $ruleDetails[0];
             $field = $ruleDetails[1];
 
             $result = config('workflows.data_resources')[$DataBus]::checkCondition($this, $data, $field, $rule->operator, $rule->value);
 
-            if(!$result){
+            if (! $result) {
                 throw new \Exception('The Condition for Task '.$this->name.' with the field '.$rule->field.' '.$rule->operator.' '.$rule->value.' failed.');
             }
-
         }
 
         return true;
     }
 
-    public function init(Model $model, DataBus $data, WorkflowLog $log){
+    public function init(Model $model, DataBus $data, WorkflowLog $log)
+    {
         $this->model = $model;
         $this->dataBus = $data;
         $this->workflowLog = $log;
@@ -148,7 +147,6 @@ class Task extends Model implements TaskInterface
         } catch (ConditionFailedError $e) {
             throw $e;
         }
-
     }
 
     /**
@@ -158,20 +156,20 @@ class Task extends Model implements TaskInterface
      */
     public function execute(): void
     {
-
     }
 
-    public function pastExecute(){
-        if(empty($this->children)){
-            return 'nothing to do';//TODO: TASK IS FINISHED
+    public function pastExecute()
+    {
+        if (empty($this->children)) {
+            return 'nothing to do'; //TODO: TASK IS FINISHED
         }
         $this->log->finish();
         $this->workflowLog->updateTaskLog($this->id, '', TaskLog::$STATUS_FINISHED, \Illuminate\Support\Carbon::now());
-        foreach($this->children as $child){
+        foreach ($this->children as $child) {
             $child->init($this->model, $this->dataBus, $this->workflowLog);
             try {
                 $child->execute();
-            }catch(\Throwable $e){
+            } catch (\Throwable $e) {
                 $child->workflowLog->updateTaskLog($child->id, $e->getMessage(), TaskLog::$STATUS_ERROR, \Illuminate\Support\Carbon::now());
                 throw $e;
             }
@@ -179,13 +177,10 @@ class Task extends Model implements TaskInterface
         }
     }
 
-    public function getSettings(){
-
+    public function getSettings()
+    {
         return view('workflows::layouts.settings_overlay', [
-                'element' => $this,
-            ]);
-
+            'element' => $this,
+        ]);
     }
-
-
 }

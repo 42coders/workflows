@@ -1,8 +1,6 @@
 <?php
 
-
 namespace the42coders\Workflows\Tests;
-
 
 use the42coders\Workflows\Workflows;
 use the42coders\Workflows\WorkflowsServiceProvider;
@@ -13,18 +11,17 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     {
         parent::setUp();
 
-        $workflowConfig = include __DIR__ . '/../config/config.php';
+        $workflowConfig = include __DIR__.'/../config/config.php';
 
         Workflows::routes();
 
         $this->artisan('migrate', ['--database' => 'testing'])->run();
-
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            WorkflowsServiceProvider::class
+            WorkflowsServiceProvider::class,
         ];
     }
 

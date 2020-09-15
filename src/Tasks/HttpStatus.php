@@ -1,21 +1,16 @@
 <?php
 
-
 namespace the42coders\Workflows\Tasks;
 
-
-use Illuminate\Support\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
 
 class HttpStatus extends Task
 {
-
-    static $fields = [
+    public static $fields = [
         'Url' => 'url',
     ];
 
-    static $output = [
+    public static $output = [
         'HTTP Status' => 'http_status',
     ];
 
@@ -23,9 +18,6 @@ class HttpStatus extends Task
 
     public function execute(): void
     {
-
         $this->setData('http_status', Http::get($this->getData('url'))->status());
-
     }
-
 }

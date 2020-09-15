@@ -1,12 +1,6 @@
 <?php
 
-
 namespace the42coders\Workflows\Tasks;
-
-
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Collection;
-use Illuminate\Database\Eloquent\Model;
 
 class SendMail extends Task
 {
@@ -22,7 +16,6 @@ class SendMail extends Task
 
     public function execute(): void
     {
-
         $dataBus = $this->dataBus;
 
         \Mail::html($dataBus->get('content'), function ($message) use ($dataBus) {
@@ -30,14 +23,12 @@ class SendMail extends Task
                 ->to($dataBus->get('recipients'))
                 ->from($dataBus->get('sender'));
             $counter = 1;
-            if(is_array($dataBus->get('files'))) {
+            if (is_array($dataBus->get('files'))) {
                 foreach ($dataBus->get('files') as $file) {
-                    $message->attachData($file, 'Datei_' . $counter);
+                    $message->attachData($file, 'Datei_'.$counter);
                     $counter++;
                 }
             }
         });
-
     }
-
 }

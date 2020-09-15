@@ -1,11 +1,8 @@
 <?php
 
-
 namespace the42coders\Workflows\Tests;
 
 use the42coders\Workflows\Loggers\TaskLog;
-use the42coders\Workflows\Workflows;
-use the42coders\Workflows\WorkflowsServiceProvider;
 
 class TaskLogTest extends TestCase
 {
@@ -49,5 +46,4 @@ class TaskLogTest extends TestCase
 
         $this->assertSame($taskLogCreated->status, TaskLog::$STATUS_FINISHED);
     }
-
 }

@@ -2,20 +2,17 @@
 
 namespace the42coders\Workflows\Http\Controllers;
 
-use the42coders\Workflows\DataBuses\DataBusResource;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use the42coders\Workflows\Loggers\WorkflowLog;
-use the42coders\Workflows\Tasks\Execute;
 use the42coders\Workflows\Tasks\Task;
 use the42coders\Workflows\Triggers\ReRunTrigger;
 use the42coders\Workflows\Triggers\Trigger;
-use the42coders\Workflows\Workflow;
-use Illuminate\Http\Request;
 //use App\Http\Controllers\Controller;
-use Illuminate\Routing\Controller;
+use the42coders\Workflows\Workflow;
 
 class WorkflowController extends Controller
 {
-
     public function index()
     {
         $workflows = Workflow::paginate(25);
@@ -47,7 +44,7 @@ class WorkflowController extends Controller
         $workflow = Workflow::find($id);
 
         return view('workflows::edit', [
-            'workflow' => $workflow
+            'workflow' => $workflow,
         ]);
     }
 
@@ -68,27 +65,27 @@ class WorkflowController extends Controller
         $workflow->delete();
 
         return redirect(route('workflow.index'));
-
     }
 
     public function addTask($id, Request $request)
     {
         $workflow = Workflow::find($id);
-        if($request->data['type'] == 'trigger'){
+        if ($request->data['type'] == 'trigger') {
             return [
                 'task' => '',
             ];
         }
         $task = Task::where('workflow_id', $workflow->id)->where('node_id', $request->id)->first();
 
-        if(!empty($task)){
+        if (! empty($task)) {
             $task->pos_x = $request->pos_x;
             $task->pos_y = $request->pos_y;
             $task->save();
+
             return ['task' => $task];
         }
 
-        if(array_key_exists($request->name, config('workflows.tasks'))){
+        if (array_key_exists($request->name, config('workflows.tasks'))) {
             $task = config('workflows.tasks')[$request->name]::create([
                 'type' => config('workflows.tasks')[$request->name],
                 'workflow_id' => $workflow->id,
@@ -104,14 +101,13 @@ class WorkflowController extends Controller
             'task' => $task,
             'node_id' => $request->id,
         ];
-
     }
 
     public function addTrigger($id, Request $request)
     {
         $workflow = Workflow::find($id);
 
-        if(array_key_exists($request->name, config('workflows.triggers.types'))){
+        if (array_key_exists($request->name, config('workflows.triggers.types'))) {
             $trigger = config('workflows.triggers.types')[$request->name]::create([
                 'type' => config('workflows.triggers.types')[$request->name],
                 'workflow_id' => $workflow->id,
@@ -126,12 +122,10 @@ class WorkflowController extends Controller
             'trigger' => $trigger,
             'node_id' => $request->id,
         ];
-
     }
 
     public function changeConditions($id, Request $request)
     {
-
         $workflow = Workflow::find($id);
 
         if ($request->type == 'task') {
@@ -144,19 +138,19 @@ class WorkflowController extends Controller
 
         $element->conditions = $request->data;
         $element->save();
+
         return $element;
     }
 
     public function changeValues($id, Request $request)
     {
-
         $workflow = Workflow::find($id);
 
-        if($request->type == 'task'){
+        if ($request->type == 'task') {
             $element = $workflow->tasks->find($request->id);
         }
 
-        if($request->type == 'trigger'){
+        if ($request->type == 'trigger') {
             $element = $workflow->triggers->find($request->id);
         }
 
@@ -168,11 +162,12 @@ class WorkflowController extends Controller
         }
         $element->data_fields = $data;
         $element->save();
+
         return $element;
     }
 
-    public function updateNodePosition($id, Request $request){
-
+    public function updateNodePosition($id, Request $request)
+    {
         $element = $this->getElementByNode($id, $request->node);
 
         $element->pos_x = $request->node['pos_x'];
@@ -180,36 +175,35 @@ class WorkflowController extends Controller
         $element->save();
 
         return ['status' => 'success'];
-
     }
 
     public function getElementByNode($workflow_id, $node)
     {
-        if($node['data']['type'] == 'task'){
+        if ($node['data']['type'] == 'task') {
             $element = Task::where('workflow_id', $workflow_id)->where('id', $node['data']['task_id'])->first();
         }
 
-        if($node['data']['type'] == 'trigger'){
+        if ($node['data']['type'] == 'trigger') {
             $element = Trigger::where('workflow_id', $workflow_id)->where('id', $node['data']['trigger_id'])->first();
         }
 
         return $element;
     }
 
-    public function addConnection($id, Request $request){
+    public function addConnection($id, Request $request)
+    {
         $workflow = Workflow::find($id);
 
-
-        if($request->parent_element['data']['type'] == 'trigger'){
+        if ($request->parent_element['data']['type'] == 'trigger') {
             $parentElement = Trigger::where('workflow_id', $workflow->id)->where('id', $request->parent_element['data']['trigger_id'])->first();
         }
-        if($request->parent_element['data']['type'] == 'task'){
+        if ($request->parent_element['data']['type'] == 'task') {
             $parentElement = Task::where('workflow_id', $workflow->id)->where('id', $request->parent_element['data']['task_id'])->first();
         }
-        if($request->child_element['data']['type'] == 'trigger'){
+        if ($request->child_element['data']['type'] == 'trigger') {
             $childElement = Trigger::where('workflow_id', $workflow->id)->where('id', $request->child_element['data']['trigger_id'])->first();
         }
-        if($request->child_element['data']['type'] == 'task'){
+        if ($request->child_element['data']['type'] == 'task') {
             $childElement = Task::where('workflow_id', $workflow->id)->where('id', $request->child_element['data']['task_id'])->first();
         }
 
@@ -221,7 +215,8 @@ class WorkflowController extends Controller
         return ['status' => 'success'];
     }
 
-    public function removeConnection($id, Request $request){
+    public function removeConnection($id, Request $request)
+    {
         $workflow = Workflow::find($id);
 
         $childTask = Task::where('workflow_id', $workflow->id)->where('node_id', $request->input_id)->first();
@@ -233,8 +228,8 @@ class WorkflowController extends Controller
         return ['status' => 'success'];
     }
 
-    public function removeTask($id, Request $request){
-
+    public function removeTask($id, Request $request)
+    {
         $workflow = Workflow::find($id);
 
         $element = $this->getElementByNode($id, $request->node);
@@ -250,34 +245,32 @@ class WorkflowController extends Controller
     {
         $workflow = Workflow::find($id);
 
-        if($request->type == 'task'){
+        if ($request->type == 'task') {
             $element = Task::where('workflow_id', $workflow->id)->where('id', $request->element_id)->first();
         }
-        if($request->type == 'trigger'){
+        if ($request->type == 'trigger') {
             $element = Trigger::where('workflow_id', $workflow->id)->where('id', $request->element_id)->first();
         }
 
-
-
         return view('workflows::layouts.settings_overlay', [
-                'element' => $element,
-            ]);
+            'element' => $element,
+        ]);
     }
 
     public function getElementConditions($id, Request $request)
     {
         $workflow = Workflow::find($id);
 
-        if($request->type == 'task'){
+        if ($request->type == 'task') {
             $element = Task::where('workflow_id', $workflow->id)->where('id', $request->element_id)->first();
         }
-        if($request->type == 'trigger'){
+        if ($request->type == 'trigger') {
             $element = Trigger::where('workflow_id', $workflow->id)->where('id', $request->element_id)->first();
         }
 
         $filter = [];
 
-        foreach(config('workflows.data_resources') as $resourceName => $resourceClass){
+        foreach (config('workflows.data_resources') as $resourceName => $resourceClass) {
             $filter[$resourceName] = $resourceClass::getValues($element, null, null);
         }
 
@@ -286,34 +279,33 @@ class WorkflowController extends Controller
             'conditions' => $element->conditions,
             'allFilters' => $filter,
         ]);
-
     }
 
     public function loadResourceIntelligence($id, Request $request)
     {
-
         $workflow = Workflow::find($id);
 
-        if($request->type == 'task'){
+        if ($request->type == 'task') {
             $element = Task::where('workflow_id', $workflow->id)->where('id', $request->element_id)->first();
         }
-        if($request->type == 'trigger'){
+        if ($request->type == 'trigger') {
             $element = Trigger::where('workflow_id', $workflow->id)->where('id', $request->element_id)->first();
         }
 
-        if(in_array($request->resource, config('workflows.data_resources'))){
+        if (in_array($request->resource, config('workflows.data_resources'))) {
             $className = $request->resource ?? 'the42coders\\Workflows\\DataBuses\\ValueResource';
             $resource = new $className();
             $html = $resource->loadResourceIntelligence($element, $request->value, $request->field_name);
         }
 
         return response()->json([
-                'html' => $html,
-                'id' => $request->field_name,
-            ]);
+            'html' => $html,
+            'id' => $request->field_name,
+        ]);
     }
 
-    public function getLogs($id){
+    public function getLogs($id)
+    {
         $workflow = Workflow::find($id);
 
         $workflowLogs = $workflow->logs()->orderBy('start', 'desc')->get();
@@ -324,7 +316,8 @@ class WorkflowController extends Controller
         ]);
     }
 
-    public function reRun($workflowLogId){
+    public function reRun($workflowLogId)
+    {
         $log = WorkflowLog::find($workflowLogId);
 
         ReRunTrigger::startWorkflow($log);

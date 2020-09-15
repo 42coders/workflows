@@ -1,24 +1,15 @@
 <?php
 
-
 namespace the42coders\Workflows\Tests;
 
-use Illuminate\Routing\Route;
 use the42coders\Workflows\DataBuses\DataBus;
-use the42coders\Workflows\Loggers\WorkflowLog;
 use the42coders\Workflows\Tasks\Task;
-use the42coders\Workflows\Triggers\ObserverTrigger;
-use the42coders\Workflows\Workflow;
-use the42coders\Workflows\Workflows;
 
 class DataBusTest extends TestCase
 {
-
-
     /** @test */
     public function DataBusCanHandleArrayInConstructor()
     {
-
         $dataBus = new DataBus(['test' => 'value']);
 
         $this->assertSame($dataBus->get('test'), 'value');
@@ -27,7 +18,6 @@ class DataBusTest extends TestCase
     /** @test */
     public function DataBusSetOutput()
     {
-
         $dataBus = new DataBus([]);
         $dataBus->setOutput('test', 'value');
 
@@ -37,7 +27,6 @@ class DataBusTest extends TestCase
     /** @test */
     public function DataBusSetOutputArray()
     {
-
         $dataBus = new DataBus([]);
         $dataBus->setOutputArray('test', 'value');
 
@@ -47,7 +36,6 @@ class DataBusTest extends TestCase
     /** @test */
     public function DataBusToString()
     {
-
         $dataBus = new DataBus([]);
         $dataBus->setOutput('test', 'value');
 
@@ -57,7 +45,6 @@ class DataBusTest extends TestCase
     /** @test */
     public function DataBusCollectData()
     {
-
         $dataBus = new DataBus([]);
 
         $dataBus->setOutput('field1', 'field_key1');
@@ -72,7 +59,4 @@ class DataBusTest extends TestCase
 
         $this->assertSame($dataBus->get('field1'), 'test');
     }
-
-
-
 }

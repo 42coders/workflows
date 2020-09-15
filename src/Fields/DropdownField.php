@@ -1,12 +1,9 @@
 <?php
 
-
 namespace the42coders\Workflows\Fields;
-
 
 class DropdownField implements FieldInterface
 {
-
     public $options;
 
     public function __construct(array $options)
@@ -14,16 +11,17 @@ class DropdownField implements FieldInterface
         $this->options = $options;
     }
 
-    public static function make(array $options){
+    public static function make(array $options)
+    {
         return new self($options);
     }
 
-    public function render($element, $value, $field){
+    public function render($element, $value, $field)
+    {
         return view('workflows::fields.dropdown_field', [
             'field' => $field,
             'value' => $value,
             'options' => $this->options,
         ])->render();
     }
-
 }

@@ -1,28 +1,25 @@
 <?php
 
-
 namespace the42coders\Workflows\DataBuses;
-
 
 trait DataBussable
 {
-
     public function workflow()
     {
         return $this->belongsTo('the42coders\Workflows\Workflow');
     }
 
-    public function getParentDataBusKeys($passedFields = []){
-
+    public function getParentDataBusKeys($passedFields = [])
+    {
         $newFields = $passedFields;
 
-        if(!empty($this->parentable)){
+        if (! empty($this->parentable)) {
 
             //foreach($this->parentable::$fields as $key => $value){
             //    $newFields[$key] = $this->parentable->name.' - '.$value;
             //}
-            foreach($this->parentable::$output as $key => $value){
-                $newFields[$this->parentable->name . ' - ' . $key . ' - ' . $this->parentable->getFieldValue($value)] = $value;
+            foreach ($this->parentable::$output as $key => $value) {
+                $newFields[$this->parentable->name.' - '.$key.' - '.$this->parentable->getFieldValue($value)] = $value;
             }
 
             $newFields = $this->parentable->getParentDataBusKeys($newFields);
@@ -45,5 +42,4 @@ trait DataBussable
     {
         return $this->dataBus->setOutput($key, $value);
     }
-
 }

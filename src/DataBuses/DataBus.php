@@ -1,14 +1,11 @@
 <?php
 
-
 namespace the42coders\Workflows\DataBuses;
-
 
 use Illuminate\Database\Eloquent\Model;
 
 class DataBus
 {
-
     public $data;
 
     public function __construct(array $data)
@@ -16,21 +13,20 @@ class DataBus
         $this->data = $data;
     }
 
-    public function collectData(Model $model, $fields):void
+    public function collectData(Model $model, $fields): void
     {
-
         foreach ($fields as $name => $field) {
             $className = $field['type'] ?? ValueResource::class;
             $resource = new $className();
             $this->data[$name] = $resource->getData($name, $field['value'], $model, $this);
         }
-
     }
 
-    public function toString(){
+    public function toString()
+    {
         $output = '';
 
-        foreach($this->data as $line){
+        foreach ($this->data as $line) {
             $output .= $line.'\n';
         }
 
@@ -51,5 +47,4 @@ class DataBus
     {
         $this->data[$this->get($key, $key)][] = $value;
     }
-
 }
