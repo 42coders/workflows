@@ -1,8 +1,6 @@
 <?php
 
-
 namespace the42coders\Workflows\DataBuses;
-
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,14 +8,12 @@ class DataBusResource implements Resource
 {
     public function getData(string $name, string $value, Model $model, DataBus $dataBus)
     {
-
         return $dataBus->data[$dataBus->data[$value]];
-
     }
 
-    public static function checkCondition(Model $element, DataBus $dataBus, String $field, String $operator, String $value)
+    public static function checkCondition(Model $element, DataBus $dataBus, string $field, string $operator, string $value)
     {
-        switch($operator){
+        switch ($operator) {
             case 'equal':
                 return $dataBus->data[$dataBus->data[$field]] == $value;
             case 'not_equal':

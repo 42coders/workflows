@@ -1,17 +1,14 @@
 <?php
 
-
 namespace the42coders\Workflows\Tasks;
-
 
 class Execute extends Task
 {
-
-    static $fields = [
+    public static $fields = [
         'Command' => 'command',
     ];
 
-    static $output = [
+    public static $output = [
         'Command Output' => 'command_output',
     ];
 
@@ -19,11 +16,8 @@ class Execute extends Task
 
     public function execute(): void
     {
-
         chdir(base_path());
 
         $this->setData('command_output', shell_exec($this->getData('command')));
-
     }
-
 }

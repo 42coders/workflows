@@ -1,43 +1,39 @@
 <?php
 
-
 namespace the42coders\Workflows\Triggers;
 
-use the42coders\Workflows\Workflow;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 trait WorkflowObservable
 {
-
     public static function bootWorkflowObservable()
     {
         static::retrieved(function (Model $model) {
-           self::startWorkflows($model, 'retrieved');
+            self::startWorkflows($model, 'retrieved');
         });
         static::creating(function (Model $model) {
-           self::startWorkflows($model, 'creating');
+            self::startWorkflows($model, 'creating');
         });
         static::created(function (Model $model) {
-           self::startWorkflows($model, 'created');
+            self::startWorkflows($model, 'created');
         });
         static::updating(function (Model $model) {
-           self::startWorkflows($model, 'updating');
+            self::startWorkflows($model, 'updating');
         });
         static::updated(function (Model $model) {
-           self::startWorkflows($model, 'updated');
+            self::startWorkflows($model, 'updated');
         });
         static::saving(function (Model $model) {
-           self::startWorkflows($model, 'saving');
+            self::startWorkflows($model, 'saving');
         });
         static::saved(function (Model $model) {
-           self::startWorkflows($model, 'saved');
+            self::startWorkflows($model, 'saved');
         });
         static::deleting(function (Model $model) {
-           self::startWorkflows($model, 'deleting');
+            self::startWorkflows($model, 'deleting');
         });
         static::deleted(function (Model $model) {
-           self::startWorkflows($model, 'deleted');
+            self::startWorkflows($model, 'deleted');
         });
         //TODO: check why they are not available here
         /*static::restoring(function (Model $model) {
@@ -65,11 +61,8 @@ trait WorkflowObservable
 
     public static function startWorkflows(Model $model, string $event)
     {
-        foreach(self::getRegisteredTriggers(get_class($model), $event) as $trigger){
-
+        foreach (self::getRegisteredTriggers(get_class($model), $event) as $trigger) {
             $trigger->start($model);
-
         }
     }
-
 }

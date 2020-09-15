@@ -1,8 +1,6 @@
 <?php
 
-
 namespace the42coders\Workflows\Loggers;
-
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -11,14 +9,13 @@ use the42coders\Workflows\Triggers\WorkflowObservable;
 
 class WorkflowLog extends Model
 {
-
     use WorkflowObservable;
 
     protected $table = 'workflow_logs';
 
-    static $STATUS_START = 'start';
-    static $STATUS_FINISHED = 'finished';
-    static $STATUS_ERROR = 'error';
+    public static $STATUS_START = 'start';
+    public static $STATUS_FINISHED = 'finished';
+    public static $STATUS_ERROR = 'error';
 
     private $taskLogsArray = [];
 
@@ -39,29 +36,33 @@ class WorkflowLog extends Model
         'triggerable_type',
     ];
 
-    function __construct(array $attributes = [])
+    public function __construct(array $attributes = [])
     {
         $this->table = config('workflows.db_prefix').$this->table;
         parent::__construct($attributes);
     }
 
-    public function workflow(){
+    public function workflow()
+    {
         return $this->belongsTo('the42coders\Workflows\Workflow');
     }
 
-    public function taskLogs(){
+    public function taskLogs()
+    {
         return $this->hasMany('the42coders\Workflows\Loggers\TaskLog');
     }
 
-    public function elementable(){
+    public function elementable()
+    {
         return $this->morphTo();
     }
 
-    public function triggerable(){
+    public function triggerable()
+    {
         return $this->morphTo();
     }
 
-    static function createHelper(Model $workflow, Model $element, $trigger): WorkflowLog
+    public static function createHelper(Model $workflow, Model $element, $trigger): WorkflowLog
     {
         return WorkflowLog::create([
             'workflow_id' => $workflow->id,

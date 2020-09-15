@@ -1,15 +1,12 @@
 <?php
 
-
 namespace the42coders\Workflows\Tasks;
 
-
-use the42coders\Workflows\DataBuses\DataBus;
 use Illuminate\Database\Eloquent\Model;
+use the42coders\Workflows\DataBuses\DataBus;
 
 interface TaskInterface
 {
-
     /**
      * Execute the Action return Value tells you about the success.
      *
@@ -20,7 +17,7 @@ interface TaskInterface
     public function execute(): void;
 
     /**
-     * Checks if all Conditions pass for this Action
+     * Checks if all Conditions pass for this Action.
      *
      * @param Model $model
      * @param DataBus $data

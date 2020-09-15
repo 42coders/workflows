@@ -1,9 +1,7 @@
 <?php
 
-
 namespace the42coders\Workflows\Tests;
 
-use Illuminate\Routing\Route;
 use the42coders\Workflows\Loggers\WorkflowLog;
 use the42coders\Workflows\Tasks\Task;
 use the42coders\Workflows\Triggers\ObserverTrigger;
@@ -12,7 +10,6 @@ use the42coders\Workflows\Workflows;
 
 class WorkflowTest extends TestCase
 {
-
     private function createBaseSetupForWorkflows()
     {
         $workflow = Workflow::create(['name' => 'TestWorkflow']);
@@ -64,31 +61,26 @@ class WorkflowTest extends TestCase
     /** @test */
     public function workflowCanHaveTasks()
     {
-
         $workflow = $this->createBaseSetupForWorkflows();
 
-
-        $this->assertTrue(!empty($workflow->tasks));
+        $this->assertTrue(! empty($workflow->tasks));
     }
 
     /** @test */
     public function workflowCanHaveTriggers()
     {
-
         $workflow = $this->createBaseSetupForWorkflows();
 
-        $this->assertTrue(!empty($workflow->triggers));
+        $this->assertTrue(! empty($workflow->triggers));
     }
 
     /** @test */
     public function workflowCanHaveLogs()
     {
-
         $workflow = $this->createBaseSetupForWorkflows();
 
-        $this->assertTrue(!empty($workflow->logs));
+        $this->assertTrue(! empty($workflow->logs));
     }
-
 
     /*public function getRoutes()
     {
@@ -111,7 +103,4 @@ class WorkflowTest extends TestCase
 
         $this->assertTrue($logCountAfter > $logCountBefore);
     }
-
-
-
 }

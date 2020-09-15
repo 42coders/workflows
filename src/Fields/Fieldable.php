@@ -1,18 +1,14 @@
 <?php
 
-
 namespace the42coders\Workflows\Fields;
 
 /**
- * Trait Fieldable
+ * Trait Fieldable.
  *
  * Access the Data Fields of an Element.
- *
- * @package the42coders\Workflows\Fields
  */
 trait Fieldable
 {
-
     /**
      * Return the Field value. If Field is not existing it returns the Field name.
      *
@@ -21,17 +17,15 @@ trait Fieldable
      */
     public function getFieldValue(string $field): string
     {
-
-        if(empty($field)){
+        if (empty($field)) {
             return '';
         }
 
-        if(!isset($this->data_fields[$field])){
+        if (! isset($this->data_fields[$field])) {
             return '';
         }
 
         return $this->data_fields[$field]['value'] ?? '';
-
     }
 
     /**
@@ -42,9 +36,7 @@ trait Fieldable
      */
     public function getFieldType(string $field): string
     {
-
         return $this->data_fields[$field]['type'] ?? '';
-
     }
 
     /**
@@ -56,9 +48,7 @@ trait Fieldable
      */
     public function fieldIsResourceType(string $field, string $resourceType): bool
     {
-
         return $this->getFieldType($field) === $resourceType;
-
     }
 
     /**
@@ -70,11 +60,8 @@ trait Fieldable
      */
     public function fieldIsSelected(string $field, string $resourceType): string
     {
-
         return $this->fieldIsResourceType($field, $resourceType) ? 'selected' : '';
-
     }
-
 
     /**
      * Loads Resource Intelligence from the corresponding DataResourceClass.
@@ -85,11 +72,10 @@ trait Fieldable
      */
     public function loadResourceIntelligence(string $field): string
     {
-
-        if(!isset($this->data_fields[$field])){
+        if (! isset($this->data_fields[$field])) {
             $resources = config('workflows.data_resources');
             $class = reset($resources);
-        }else{
+        } else {
             $className = $this->getFieldType($field);
             $class = new $className();
         }
@@ -106,5 +92,4 @@ trait Fieldable
     {
         return $this->inputFields()[$key] ?? null;
     }
-
 }

@@ -89,13 +89,12 @@ return [
             'classes' => [
                 \App\User::class => 'User',
                 \the42coders\Workflows\Loggers\WorkflowLog::class => 'WorkflowLog',
-            ]
+            ],
 
         ],
 
     ],
     'queue' => 'redis',
-
 
     /*
     |--------------------------------------------------------------------------

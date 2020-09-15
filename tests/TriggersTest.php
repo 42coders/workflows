@@ -1,13 +1,9 @@
 <?php
 
-
 namespace the42coders\Workflows\Tests;
 
-use the42coders\Workflows\Loggers\TaskLog;
 use the42coders\Workflows\Triggers\ObserverTrigger;
 use the42coders\Workflows\Triggers\Trigger;
-use the42coders\Workflows\Workflows;
-use the42coders\Workflows\WorkflowsServiceProvider;
 
 class TriggersTest extends TestCase
 {
@@ -26,5 +22,4 @@ class TriggersTest extends TestCase
 
         $this->assertStringContainsString(__('workflows::workflows.Settings'), $trigger->getSettings());
     }
-
 }

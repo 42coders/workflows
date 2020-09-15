@@ -1,14 +1,11 @@
 <?php
 
-
 namespace the42coders\Workflows\Triggers;
-
 
 use the42coders\Workflows\Fields\DropdownField;
 
 class ObserverTrigger extends Trigger
 {
-
     public static $icon = '<i class="fas fa-binoculars"></i>';
 
     public static $fields = [

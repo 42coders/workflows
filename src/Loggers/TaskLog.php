@@ -1,20 +1,17 @@
 <?php
 
-
 namespace the42coders\Workflows\Loggers;
-
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 class TaskLog extends Model
 {
-
     protected $table = 'task_logs';
 
-    static $STATUS_START = 'start';
-    static $STATUS_FINISHED = 'finished';
-    static $STATUS_ERROR = 'error';
+    public static $STATUS_START = 'start';
+    public static $STATUS_FINISHED = 'finished';
+    public static $STATUS_ERROR = 'error';
 
     protected $fillable = [
         'status',
@@ -26,15 +23,14 @@ class TaskLog extends Model
         'end',
     ];
 
-    function __construct(array $attributes = [])
+    public function __construct(array $attributes = [])
     {
         $this->table = config('workflows.db_prefix').$this->table;
         parent::__construct($attributes);
     }
 
-    static function createHelper(int $workflow_log_id, int $task_id, string $task_name, string $status = null, string $message = '', $start = null, $end = null): TaskLog
+    public static function createHelper(int $workflow_log_id, int $task_id, string $task_name, string $status = null, string $message = '', $start = null, $end = null): TaskLog
     {
-
         return TaskLog::create([
             'status' => $status ?? self::$STATUS_START,
             'workflow_log_id' => $workflow_log_id,
@@ -44,7 +40,6 @@ class TaskLog extends Model
             'start' => $start ?? Carbon::now(),
             'end' => $end,
         ]);
-
     }
 
     public function setError(string $errorMessage)
@@ -61,5 +56,4 @@ class TaskLog extends Model
         $this->end = Carbon::now();
         $this->save();
     }
-
 }

@@ -1,22 +1,17 @@
 <?php
 
-
 namespace the42coders\Workflows\Triggers;
 
-
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 use the42coders\Workflows\DataBuses\DataBus;
 use the42coders\Workflows\DataBuses\DataBussable;
 use the42coders\Workflows\Fields\Fieldable;
 use the42coders\Workflows\Jobs\ProcessWorkflow;
-use the42coders\Workflows\Loggers\TaskLog;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
 use the42coders\Workflows\Loggers\WorkflowLog;
 
 class Trigger extends Model
 {
-
     use DataBussable, Fieldable;
 
     protected $table = 'triggers';
@@ -48,13 +43,14 @@ class Trigger extends Model
         'Description' => 'description',
     ];
 
-    function __construct(array $attributes = [])
+    public function __construct(array $attributes = [])
     {
         $this->table = config('workflows.db_prefix').$this->table;
         parent::__construct($attributes);
     }
 
-    public function children(){
+    public function children()
+    {
         return $this->morphMany('the42coders\Workflows\Tasks\Task', 'parentable');
     }
 
@@ -85,18 +81,17 @@ class Trigger extends Model
         return $model;
     }
 
-    public function start(Model $model, array $data = []){
-
+    public function start(Model $model, array $data = [])
+    {
         $log = WorkflowLog::createHelper($this->workflow, $model, $this);
         $dataBus = new DataBus($data);
         ProcessWorkflow::dispatch($model, $dataBus, $this, $log);
     }
 
-    public function getSettings(){
-
+    public function getSettings()
+    {
         return view('workflows::layouts.settings_overlay', [
             'element' => $this,
         ]);
-
     }
 }

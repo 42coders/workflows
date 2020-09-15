@@ -1,6 +1,5 @@
 <?php
 
-
 namespace the42coders\Workflows\Tests;
 
 use Illuminate\Support\Carbon;
@@ -9,12 +8,9 @@ use the42coders\Workflows\Loggers\TaskLog;
 use the42coders\Workflows\Loggers\WorkflowLog;
 use the42coders\Workflows\Triggers\Trigger;
 use the42coders\Workflows\Workflow;
-use the42coders\Workflows\Workflows;
-use the42coders\Workflows\WorkflowsServiceProvider;
 
 class WorkflowLogTest extends TestCase
 {
-
     private function getWorkflowLog()
     {
         $workflow = new Workflow();
@@ -33,7 +29,6 @@ class WorkflowLogTest extends TestCase
     /** @test */
     public function workflowLogCreateHelperIsCreatingATaskLogInDBAndStatusIsStart()
     {
-
         $workflowLogCreated = $this->getWorkflowLog();
 
         $this->assertSame($workflowLogCreated->workflow_id, 1);
@@ -47,7 +42,7 @@ class WorkflowLogTest extends TestCase
 
         $dataBus = new DataBus([]);
 
-        $workflowLogCreated->setError('This is an Error',  $dataBus);
+        $workflowLogCreated->setError('This is an Error', $dataBus);
 
         $this->assertSame($workflowLogCreated->status, WorkflowLog::$STATUS_ERROR);
         $this->assertSame($workflowLogCreated->message, 'This is an Error');
@@ -67,7 +62,7 @@ class WorkflowLogTest extends TestCase
     public function workflowLogAddTaskLogAddsArrayToThisTaskLogs()
     {
         $workflowLogCreated = $this->getWorkflowLog();
-        $workflowLogCreated->addTaskLog(1,2,'test', TaskLog::$STATUS_START, 'test', Carbon::now());
+        $workflowLogCreated->addTaskLog(1, 2, 'test', TaskLog::$STATUS_START, 'test', Carbon::now());
         $workflowLogCreated->updateTaskLog(2, 'Changed Value', TaskLog::$STATUS_FINISHED, Carbon::now());
 
         $workflowLogCreated->createTaskLogsFromMemory();
@@ -75,8 +70,5 @@ class WorkflowLogTest extends TestCase
         $taskLog = TaskLog::where('workflow_log_id', 1)->where('task_id', 2)->first();
 
         $this->assertSame($taskLog->message, 'Changed Value');
-
     }
-
-
 }
