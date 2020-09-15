@@ -16,9 +16,9 @@ class WorkflowLog extends Model
 
     protected $table = 'workflow_logs';
 
-    static string $STATUS_START = 'start';
-    static string $STATUS_FINISHED = 'finished';
-    static string $STATUS_ERROR = 'error';
+    static $STATUS_START = 'start';
+    static $STATUS_FINISHED = 'finished';
+    static $STATUS_ERROR = 'error';
 
     private $taskLogsArray = [];
 
