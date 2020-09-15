@@ -4,6 +4,7 @@
 namespace the42coders\Workflows\Tests;
 
 
+use the42coders\Workflows\Workflows;
 use the42coders\Workflows\WorkflowsServiceProvider;
 
 abstract class TestCase extends \Orchestra\Testbench\TestCase
@@ -14,6 +15,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 
         $workflowConfig = include __DIR__ . '/../config/config.php';
 
+        Workflows::routes();
 
         $this->artisan('migrate', ['--database' => 'testing'])->run();
 

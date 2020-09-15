@@ -226,7 +226,8 @@ class WorkflowController extends Controller
 
         $childTask = Task::where('workflow_id', $workflow->id)->where('node_id', $request->input_id)->first();
 
-        $childTask->parent_id = 0;
+        $childTask->parentable_id = 0;
+        $childTask->parentable_type = null;
         $childTask->save();
 
         return ['status' => 'success'];
@@ -241,7 +242,7 @@ class WorkflowController extends Controller
         $element->delete();
 
         return [
-            'status' => 'delted',
+            'status' => 'success',
         ];
     }
 
