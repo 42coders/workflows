@@ -10,7 +10,7 @@ use the42coders\Workflows\DataBuses\ModelResource;
 class TrixInputField implements FieldInterface
 {
 
-    public array $options;
+    public $options;
 
     public function __construct()
     {

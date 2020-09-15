@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class DataBus
 {
 
-    public array $data;
+    public $data;
 
     public function __construct(array $data)
     {

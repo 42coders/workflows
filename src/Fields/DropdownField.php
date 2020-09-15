@@ -7,7 +7,7 @@ namespace the42coders\Workflows\Fields;
 class DropdownField implements FieldInterface
 {
 
-    public array $options;
+    public $options;
 
     public function __construct(array $options)
     {
