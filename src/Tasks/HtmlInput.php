@@ -10,11 +10,11 @@ use the42coders\Workflows\Fields\TrixInputField;
 class HtmlInput extends Task
 {
 
-    static array $fields = [
+    static $fields = [
         'Html' => 'html',
     ];
 
-    static array $output = [
+    static $output = [
         'HtmlOutput' => 'html_output',
     ];
 

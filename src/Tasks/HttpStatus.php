@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Http;
 class HttpStatus extends Task
 {
 
-    static array $fields = [
+    static $fields = [
         'Url' => 'url',
     ];
 
-    static array $output = [
+    static $output = [
         'HTTP Status' => 'http_status',
     ];
 

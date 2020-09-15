@@ -11,7 +11,7 @@ class ObserverTrigger extends Trigger
 
     public static $icon = '<i class="fas fa-binoculars"></i>';
 
-    public static array $fields = [
+    public static $fields = [
         'Class' => 'class',
         'Event' => 'event',
     ];

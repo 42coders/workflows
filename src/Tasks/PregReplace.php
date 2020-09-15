@@ -10,13 +10,13 @@ use Illuminate\Database\Eloquent\Model;
 class PregReplace extends Task
 {
 
-    static array $fields = [
+    static $fields = [
         'Patter' => 'pattern',
         'Replacement' => 'replacement',
         'Subject' => 'subject',
     ];
 
-    static array $output = [
+    static $output = [
         'Preg Replace Output' => 'preg_replace_output',
     ];
 

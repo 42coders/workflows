@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SendMail extends Task
 {
-    public static array $fields = [
+    public static $fields = [
         'Subject' => 'subject',
         'Recipients' => 'recipients',
         'Sender' => 'sender',

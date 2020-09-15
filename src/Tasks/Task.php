@@ -48,8 +48,8 @@ class Task extends Model implements TaskInterface
         'data_fields' => 'array',
     ];
 
-    public static array $fields = [];
-    public static array $output = [];
+    public static $fields = [];
+    public static $output = [];
 
     function __construct(array $attributes = [])
     {

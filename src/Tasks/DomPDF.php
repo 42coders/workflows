@@ -13,11 +13,11 @@ use Barryvdh\DomPDF\Facade as PDF;
 class DomPDF extends Task
 {
 
-    static array $fields = [
+    static $fields = [
         'Html' => 'html',
     ];
 
-    static array $output = [
+    static $output = [
         'PDFFile' => 'pdf_file',
     ];
 

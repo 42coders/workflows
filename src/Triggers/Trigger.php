@@ -36,9 +36,9 @@ class Trigger extends Model
         'pos_y',
     ];
 
-    public static array $output = [];
-    public static array $fields = [];
-    public static array $fields_definitions = [];
+    public static $output = [];
+    public static $fields = [];
+    public static $fields_definitions = [];
 
     protected $casts = [
         'data_fields' => 'array',

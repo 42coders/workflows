@@ -14,7 +14,7 @@ use the42coders\Workflows\Loggers\TaskLog;
 class Workflow extends Model
 {
 
-    private DataBus $data;
+    private $data;
 
     protected $table = 'workflows';
 

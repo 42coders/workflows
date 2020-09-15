@@ -7,11 +7,11 @@ namespace the42coders\Workflows\Tasks;
 class Execute extends Task
 {
 
-    static array $fields = [
+    static $fields = [
         'Command' => 'command',
     ];
 
-    static array $output = [
+    static $output = [
         'Command Output' => 'command_output',
     ];
 
