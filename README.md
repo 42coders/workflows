@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/the42coders/workflows.svg?style=flat-square)](https://packagist.org/packages/the42coders/workflows)
 [![Build Status](https://img.shields.io/travis/42coders/workflows/master.svg?style=flat-square)](https://travis-ci.org/42coders/workflows)
-[![Quality Score](https://img.shields.io/scrutinizer/g/42coders/workflows.svg?style=flat-square)](https://scrutinizer-ci.com/g/42coders/workflows)
+[![Quality Score](https://img.shields.io/styleci/g/42coders/workflows.svg?style=flat-square)](https://github.styleci.io/repos/295739465/shield)
 [![Total Downloads](https://img.shields.io/packagist/dt/42coders/workflows.svg?style=flat-square)](https://packagist.org/packages/42coders/workflows)
 
 The Workflow Package add Drag & Drop Workflows to your Laravel Application. A Workflow consists of a Triggers and Tasks.
