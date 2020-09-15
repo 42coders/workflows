@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": "^7.1",
+        "php": "^7.3",
         "illuminate/support": "*",
         "barryvdh/laravel-dompdf": "^0.8.6",
         "guzzlehttp/guzzle": "^6.3"
