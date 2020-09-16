@@ -5,11 +5,11 @@
 [![Quality Score](https://github.styleci.io/repos/295739465/shield)](https://github.styleci.io/repos/295739465/shield)
 [![Total Downloads](https://img.shields.io/packagist/dt/the2coders/workflows.svg?style=flat-square)](https://packagist.org/packages/the42coders/workflows)
 
-The Workflow Package add Drag & Drop Workflows to your Laravel Application. A Workflow consists of a Triggers and Tasks.
-The Trigger is responsible for starting a Workflow. The Tasks are single nodes of code execution. The package comes
-with some handy tasks bundled, but you can easily write your own as well.
+The Workflow Package adds Drag & Drop Workflows to your Laravel Application. A Workflow consists of Triggers and Tasks. 
+The Trigger is responsible for starting a Workflow. The Tasks are single nodes of code execution. 
+The package comes with some handy tasks bundled, but you can easily write your own as well.
 
-If you are interested of news and updates 
+If you are interested in news and updates 
 - Follow me on [Twitter](https://twitter.com/gwagwagwa) && || register to our [Newsletter](https://workflows.42coders.com)
 
 ## Installation
@@ -103,7 +103,7 @@ The DomPDF Task offers you a way to generate a PDF from HTML and put it to the D
 
 #### SaveFile
 
-The SaveFile Task allows you to save Data to a File. Works easy with your registered Storage defines.
+The SaveFile Task allows you to save Data to a File. Works easily with your registered Storage defines.
 
 #### SendMail
 
@@ -112,11 +112,11 @@ The SendMail Task allows you to send a Mail. You can pass the Content and Attach
 
 #### HttpStatus
 
-The HttpStatus offers you a way to receive the Http Status of a given url.
+The HttpStatus offers you a way to receive the Http Status of a given URL.
 
 ### DataBus
 
-The DataBus is a way to pass information between the single Tasks. This keeps the Tasks independent to each other.
+The DataBus is a way to pass information between the single Tasks. This keeps the Tasks independent of each other.
 
 #### ValueResource
 
@@ -124,7 +124,7 @@ The Value Resource is the simplest Resource. You can just write your Data in an 
 
 #### ConfigResource 
 
-The Config Resource let you access values from your Config Files.
+The Config Resource lets you access values from your Config Files.
 
 #### ModelResource
 
@@ -132,7 +132,7 @@ The ModelResource lets you access the Data from the passed Eloquent Model.
 
 #### DataBusResource
 
-The DataBusResource lets you acces the Data from the DataBus. This means all values which got set by a
+The DataBusResource lets you access the Data from the DataBus. This means all values which got set by a
 previous Task are access able here.
 
 ### Testing
@@ -143,7 +143,7 @@ composer test
 
 ### Changelog
 
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+Please see [CHANGELOG](CHANGELOG.md) for more information about what has changed recently.
 
 ## Contributing
 
