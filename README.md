@@ -21,7 +21,7 @@ If you are interested in news and updates
 You can install the package via composer:
 
 ```bash
-composer require 42coders/workflows
+composer require the42coders/workflows
 ```
 
 You need to register the routes to your web.php routes File as well.
