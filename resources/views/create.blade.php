@@ -11,6 +11,7 @@
         <div class="row">
             <div class="col-md-12">
                <form action="{{config('workflows.prefix')}}/workflows/store" method="POST">
+                   @csrf
                    <div class="col-md-12">
                    <div class="form-group">
                        <input type="text" class="form-control" id="name" name="name" aria-describedby="Name" placeholder="Name">
