@@ -8,7 +8,6 @@ return [
         'PregReplace' => 'Preg Replace',
         'HtmlInput' => 'Html Input',
         'DomPDF' => 'DomPDF',
-        'SaveFile' => 'Save File',
         'HttpStatus' => 'Http Status',
     ],
     'Resources' => [
