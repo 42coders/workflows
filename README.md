@@ -57,6 +57,8 @@ php artisan vendor:publish --provider="the42coders\Workflows\WorkflowsServicePro
 The Workflow Package is working out of the Box in your Laravel application. Just go to the route /workflows 
 to get started.
 
+[![Short Introduction](http://img.youtube.com/vi/J-fplZGlTZI/0.jpg)](http://www.youtube.com/watch?v=J-fplZGlTZI "Short Introduction")
+
 ### Workflows
 
 A Workflow is gets started by a Trigger and then executes the Tasks in the Order you set them. 
