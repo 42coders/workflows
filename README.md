@@ -25,7 +25,7 @@ composer require 42coders/workflows
 ```
 
 You need to register the routes to your web.php routes File as well.
-Since the Workflow Package is very powerful make sure to secure the routes with what ever authentication
+Since the Workflow Package is very powerful make sure to secure the routes with whatever authentication
 you use in the rest of your app. 
 
 ```php
@@ -92,7 +92,7 @@ A Task is a single code execution Node in the Workflow.
 
 Task | Description
 ---- | -----------
-HtmlInput | The HtmlInput Task offers you a Trix Input Field which is able to render Blade. You can put in placeholders for dynami ccontent in two Ways. From the Model passed through the Workflow or from the DataBus.
+HtmlInput | The HtmlInput Task offers you a Trix Input Field which is able to render Blade. You can put in placeholders for dynamic content in two Ways. From the Model passed through the Workflow or from the DataBus.
 Execute | The Execute Task offers you to execute Shell Commands and is able to push the output of them to the DataBus.
 PregReplace | The PregReplace Task offers you a way to to a preg replace on a Value from the Model or a DataBus Variable.
 DomPDF | The DomPDF Task offers you a way to generate a PDF from HTML and put it to the DataBus (Works great with the HtmlInput Task).
