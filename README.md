@@ -5,12 +5,16 @@
 [![Quality Score](https://github.styleci.io/repos/295739465/shield)](https://github.styleci.io/repos/295739465/shield)
 [![Total Downloads](https://img.shields.io/packagist/dt/the2coders/workflows.svg?style=flat-square)](https://packagist.org/packages/the42coders/workflows)
 
+![Logo](https://github.com/42coders/workflows/blob/master/resources/img/42workflows.png?raw=true)
+
 The Workflow Package adds Drag & Drop Workflows to your Laravel Application. A Workflow consists of Triggers and Tasks. 
 The Trigger is responsible for starting a Workflow. The Tasks are single nodes of code execution. 
 The package comes with some handy tasks bundled, but you can easily write your own as well.
 
 If you are interested in news and updates 
 - Follow me on [Twitter](https://twitter.com/gwagwagwa) && || register to our [Newsletter](https://workflows.42coders.com)
+
+[Video Tutorial](http://www.youtube.com/watch?v=J-fplZGlTZI "Short Introduction Video")
 
 ## Installation
 
@@ -21,9 +25,13 @@ composer require 42coders/workflows
 ```
 
 You need to register the routes to your web.php routes File as well.
+Since the Workflow Package is very powerful make sure to secure the routes with what ever authentication
+you use in the rest of your app. 
 
 ```php
-\the42coders\Workflows\Workflows::routes();
+Route::group(['middleware' => ['auth']], function () {
+    \the42coders\Workflows\Workflows::routes();
+});
 ```
 
 You need to publish the assets of the Package
@@ -57,7 +65,6 @@ php artisan vendor:publish --provider="the42coders\Workflows\WorkflowsServicePro
 The Workflow Package is working out of the Box in your Laravel application. Just go to the route /workflows 
 to get started.
 
-[![Short Introduction](http://img.youtube.com/vi/J-fplZGlTZI/0.jpg)](http://www.youtube.com/watch?v=J-fplZGlTZI "Short Introduction")
 
 ### Workflows
 
@@ -66,7 +73,7 @@ To pass information between the Tasks we have the DataBus.
 
 ### Triggers
 
-A Trigger is the Starting Point and defines how a Workflow gets called. 
+A Trigger is the Starting Point and defines how a Workflow gets called. More Triggers coming soon.
 
 #### ObserverTrigger
 
@@ -83,59 +90,30 @@ To make it Work add the WorkflowObservable to your Eloquent Model.
 
 A Task is a single code execution Node in the Workflow. 
 
-#### HtmlInput
+Task | Description
+---- | -----------
+HtmlInput | The HtmlInput Task offers you a Trix Input Field which is able to render Blade. You can put in placeholders for dynami ccontent in two Ways. From the Model passed through the Workflow or from the DataBus.
+Execute | The Execute Task offers you to execute Shell Commands and is able to push the output of them to the DataBus.
+PregReplace | The PregReplace Task offers you a way to to a preg replace on a Value from the Model or a DataBus Variable.
+DomPDF | The DomPDF Task offers you a way to generate a PDF from HTML and put it to the DataBus (Works great with the HtmlInput Task).
+SaveFile | The SaveFile Task allows you to save Data to a File. Works easily with your registered Storage defines.
+SendMail | The SendMail Task allows you to send a Mail. You can pass the Content and Attachments to it. (Works great with HtmlInput and DomPDF) 
+HttpStatus | The HttpStatus offers you a way to receive the Http Status of a given URL.
 
-The HtmlInput Task offers you a Trix Input Field which is able to render Blade. You can put in placeholders for dynamic
-content in two Ways.
- 1. From the Model passed through the Workflow
- 2. From the DataBus
- 
-#### Execute
-
-The Execute Task offers you to execute Shell Commands and is able to push the output of them to the DataBus.
-
-#### PregReplace
-
-The PregReplace Task offers you a way to to a preg replace on a Value from the Model or a DataBus Variable.
-
-#### DomPDF 
-
-The DomPDF Task offers you a way to generate a PDF from HTML and put it to the DataBus 
-(Works great with the HtmlInput Task).
-
-#### SaveFile
-
-The SaveFile Task allows you to save Data to a File. Works easily with your registered Storage defines.
-
-#### SendMail
-
-The SendMail Task allows you to send a Mail. You can pass the Content and Attachments to it. 
-(Works great with HtmlInput and DomPDF) 
-
-#### HttpStatus
-
-The HttpStatus offers you a way to receive the Http Status of a given URL.
 
 ### DataBus
 
 The DataBus is a way to pass information between the single Tasks. This keeps the Tasks independent of each other.
 
-#### ValueResource
+Resource | Description
+---- | -----------
+ValueResource | The Value Resource is the simplest Resource. You can just write your Data in an input field.
+ConfigResource | The Config Resource lets you access values from your Config Files.
+ModelResource | The ModelResource lets you access the Data from the passed Eloquent Model.
+DataBusResource | The DataBusResource lets you access the Data from the DataBus. This means all values which got set by a previous Task are access able here.
 
-The Value Resource is the simplest Resource. You can just write your Data in an input field.
 
-#### ConfigResource 
 
-The Config Resource lets you access values from your Config Files.
-
-#### ModelResource
-
-The ModelResource lets you access the Data from the passed Eloquent Model.
-
-#### DataBusResource
-
-The DataBusResource lets you access the Data from the DataBus. This means all values which got set by a
-previous Task are access able here.
 
 ### Testing
 
