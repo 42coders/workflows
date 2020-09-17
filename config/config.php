@@ -28,7 +28,6 @@ return [
         'PregReplace' => the42coders\Workflows\Tasks\PregReplace::class,
         'HtmlInput' => the42coders\Workflows\Tasks\HtmlInput::class,
         'DomPDF' => the42coders\Workflows\Tasks\DomPDF::class,
-        'SaveFile' => the42coders\Workflows\Tasks\SaveFile::class,
         'HttpStatus' => the42coders\Workflows\Tasks\HttpStatus::class,
     ],
 
