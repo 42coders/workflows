@@ -68,6 +68,7 @@ return [
 
         'types' => [
             'ObserverTrigger' => the42coders\Workflows\Triggers\ObserverTrigger::class,
+            'ButtonTrigger' => the42coders\Workflows\Triggers\ButtonTrigger::class,
         ],
 
         'Observers' => [
@@ -89,8 +90,12 @@ return [
                 \App\User::class => 'User',
                 \the42coders\Workflows\Loggers\WorkflowLog::class => 'WorkflowLog',
             ],
-
         ],
+        'Button' => [
+            'classes' => [
+                \App\User::class => 'User',
+            ]
+        ]
 
     ],
     'queue' => 'redis',

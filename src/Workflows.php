@@ -34,5 +34,8 @@ class Workflows
         /** log routes */
         Route::post('/workflows/logs/reRun/{workflow_log_id}', '\the42coders\Workflows\Http\Controllers\WorkflowController@reRun')->name('workflow.reRun');
         Route::post('/workflows/logs/{id}/getLogs', '\the42coders\Workflows\Http\Controllers\WorkflowController@getLogs')->name('workflow.getLogs');
+
+        /** triggers */
+        Route::post('/workflows/button_trigger/execute/{id}', '\the42coders\Workflows\Http\Controllers\WorkflowController@triggerButton')->name('workflows.triggers.button');
     }
 }
