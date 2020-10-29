@@ -1,6 +1,6 @@
 <?php
 
-namespace the42coders\Workflows\Fields;
+namespace The42Coders\Workflows\Fields;
 
 interface FieldInterface
 {

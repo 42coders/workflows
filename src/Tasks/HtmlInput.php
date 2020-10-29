@@ -1,9 +1,9 @@
 <?php
 
-namespace the42coders\Workflows\Tasks;
+namespace The42Coders\Workflows\Tasks;
 
 use Illuminate\Support\Facades\Blade;
-use the42coders\Workflows\Fields\TrixInputField;
+use The42Coders\Workflows\Fields\TrixInputField;
 
 class HtmlInput extends Task
 {

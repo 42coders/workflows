@@ -23,12 +23,12 @@ return [
     |
     */
     'tasks' => [
-        'SendMail' => the42coders\Workflows\Tasks\SendMail::class,
-        'Execute' => the42coders\Workflows\Tasks\Execute::class,
-        'PregReplace' => the42coders\Workflows\Tasks\PregReplace::class,
-        'HtmlInput' => the42coders\Workflows\Tasks\HtmlInput::class,
-        'DomPDF' => the42coders\Workflows\Tasks\DomPDF::class,
-        'HttpStatus' => the42coders\Workflows\Tasks\HttpStatus::class,
+        'SendMail' => The42Coders\Workflows\Tasks\SendMail::class,
+        'Execute' => The42Coders\Workflows\Tasks\Execute::class,
+        'PregReplace' => The42Coders\Workflows\Tasks\PregReplace::class,
+        'HtmlInput' => The42Coders\Workflows\Tasks\HtmlInput::class,
+        'DomPDF' => The42Coders\Workflows\Tasks\DomPDF::class,
+        'HttpStatus' => The42Coders\Workflows\Tasks\HttpStatus::class,
     ],
 
     /*
@@ -41,10 +41,10 @@ return [
     |
     */
     'data_resources' => [
-        'ValueResource' => the42coders\Workflows\DataBuses\ValueResource::class,
-        'ModelResource' => the42coders\Workflows\DataBuses\ModelResource::class,
-        'DataResource' => the42coders\Workflows\DataBuses\DataBusResource::class,
-        'ConfigResource' => the42coders\Workflows\DataBuses\ConfigResource::class,
+        'ValueResource' => The42Coders\Workflows\DataBuses\ValueResource::class,
+        'ModelResource' => The42Coders\Workflows\DataBuses\ModelResource::class,
+        'DataResource' => The42Coders\Workflows\DataBuses\DataBusResource::class,
+        'ConfigResource' => The42Coders\Workflows\DataBuses\ConfigResource::class,
     ],
 
     /*
@@ -67,7 +67,7 @@ return [
     'triggers' => [
 
         'types' => [
-            'ObserverTrigger' => the42coders\Workflows\Triggers\ObserverTrigger::class,
+            'ObserverTrigger' => The42Coders\Workflows\Triggers\ObserverTrigger::class,
         ],
 
         'Observers' => [
@@ -87,7 +87,7 @@ return [
             ],
             'classes' => [
                 \App\User::class => 'User',
-                \the42coders\Workflows\Loggers\WorkflowLog::class => 'WorkflowLog',
+                \The42Coders\Workflows\Loggers\WorkflowLog::class => 'WorkflowLog',
             ],
 
         ],

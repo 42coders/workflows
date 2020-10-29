@@ -1,6 +1,6 @@
 <?php
 
-namespace the42coders\Workflows\Loggers;
+namespace The42Coders\Workflows\Loggers;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;

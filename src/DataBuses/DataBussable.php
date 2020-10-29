@@ -1,12 +1,12 @@
 <?php
 
-namespace the42coders\Workflows\DataBuses;
+namespace The42Coders\Workflows\DataBuses;
 
 trait DataBussable
 {
     public function workflow()
     {
-        return $this->belongsTo('the42coders\Workflows\Workflow');
+        return $this->belongsTo('The42Coders\Workflows\Workflow');
     }
 
     public function getParentDataBusKeys($passedFields = [])

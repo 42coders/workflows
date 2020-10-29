@@ -1,9 +1,9 @@
 <?php
 
-namespace the42coders\Workflows\Fields;
+namespace The42Coders\Workflows\Fields;
 
-use the42coders\Workflows\DataBuses\DataBusResource;
-use the42coders\Workflows\DataBuses\ModelResource;
+use The42Coders\Workflows\DataBuses\DataBusResource;
+use The42Coders\Workflows\DataBuses\ModelResource;
 
 class TrixInputField implements FieldInterface
 {

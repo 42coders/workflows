@@ -1,6 +1,6 @@
 <?php
 
-namespace the42coders\Workflows\Tasks;
+namespace The42Coders\Workflows\Tasks;
 
 class SendMail extends Task
 {
