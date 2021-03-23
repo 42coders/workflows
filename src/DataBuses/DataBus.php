@@ -16,6 +16,10 @@ class DataBus
     public function collectData(Model $model, $fields): void
     {
         foreach ($fields as $name => $field) {
+            //TODO: Quick fix to remove description but handle/filter this better in the future :(
+            if($name == 'description'){
+                continue;
+            }
             $className = $field['type'] ?? ValueResource::class;
             $resource = new $className();
             $this->data[$name] = $resource->getData($name, $field['value'], $model, $this);
