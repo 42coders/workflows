@@ -45,7 +45,7 @@
 <body>
 <header>
     <div style="width: 250px; ">
-        <a href="{{config('workflows.prefix')}}/workflow"><img src="{{ asset('vendor/workflows/img/42workflows.png') }}" class="img-fluid"/></a>
+        <a href="{{config('workflows.prefix')}}/workflows"><img src="{{ asset('vendor/workflows/img/42workflows.png') }}" class="img-fluid"/></a>
     </div>
 </header>
 <div class="wrapper">
