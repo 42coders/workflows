@@ -1,6 +1,6 @@
 <?php
 
-namespace the42coders\Workflows\DataBuses;
+namespace The42Coders\Workflows\DataBuses;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace the42coders\Workflows\Tasks;
+namespace The42Coders\Workflows\Tasks;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use the42coders\Workflows\DataBuses\DataBus;
-use the42coders\Workflows\DataBuses\DataBussable;
-use the42coders\Workflows\Fields\Fieldable;
-use the42coders\Workflows\Loggers\TaskLog;
-use the42coders\Workflows\Loggers\WorkflowLog;
+use The42Coders\Workflows\DataBuses\DataBus;
+use The42Coders\Workflows\DataBuses\DataBussable;
+use The42Coders\Workflows\Fields\Fieldable;
+use The42Coders\Workflows\Loggers\TaskLog;
+use The42Coders\Workflows\Loggers\WorkflowLog;
 
 class Task extends Model implements TaskInterface
 {
@@ -55,7 +55,7 @@ class Task extends Model implements TaskInterface
 
     public function workflow()
     {
-        return $this->belongsTo('the42coders\Workflows\Workflow');
+        return $this->belongsTo('The42Coders\Workflows\Workflow');
     }
 
     public function getFields()
@@ -70,7 +70,7 @@ class Task extends Model implements TaskInterface
 
     public function children()
     {
-        return $this->morphMany('the42coders\Workflows\Tasks\Task', 'parentable');
+        return $this->morphMany('The42Coders\Workflows\Tasks\Task', 'parentable');
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace the42coders\Workflows\Triggers;
+namespace The42Coders\Workflows\Triggers;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -53,7 +53,7 @@ trait WorkflowObservable
 
         $className = $class_array[count($class_array) - 1];
 
-        return Trigger::where('type', 'the42coders\Workflows\Triggers\ObserverTrigger')
+        return Trigger::where('type', 'The42Coders\Workflows\Triggers\ObserverTrigger')
             ->where('data_fields->class->value', 'like', '%'.$className.'%')
             ->where('data_fields->event->value', $event)
             ->get();

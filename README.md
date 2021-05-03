@@ -30,14 +30,14 @@ you use in the rest of your app.
 
 ```php
 Route::group(['middleware' => ['auth']], function () {
-    \the42coders\Workflows\Workflows::routes();
+    \The42Coders\Workflows\Workflows::routes();
 });
 ```
 
 You need to publish the assets of the Package
 
 ```bash
-php artisan vendor:publish --provider="the42coders\Workflows\WorkflowsServiceProvider"  --tag=assets  
+php artisan vendor:publish --provider="The42Coders\Workflows\WorkflowsServiceProvider"  --tag=assets  
 ```
 
 Other publishable Contents are
@@ -45,19 +45,19 @@ Other publishable Contents are
 config
 
 ```bash
-php artisan vendor:publish --provider="the42coders\Workflows\WorkflowsServiceProvider"  --tag=config  
+php artisan vendor:publish --provider="The42Coders\Workflows\WorkflowsServiceProvider"  --tag=config  
 ```
 
 language
 
 ```bash
-php artisan vendor:publish --provider="the42coders\Workflows\WorkflowsServiceProvider"  --tag=lang  
+php artisan vendor:publish --provider="The42Coders\Workflows\WorkflowsServiceProvider"  --tag=lang  
 ```
 
 views
 
 ```bash
-php artisan vendor:publish --provider="the42coders\Workflows\WorkflowsServiceProvider"  --tag=views  
+php artisan vendor:publish --provider="The42Coders\Workflows\WorkflowsServiceProvider"  --tag=views  
 ```
 
 ## Usage

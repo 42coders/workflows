@@ -1,6 +1,6 @@
 <?php
 
-namespace the42coders\Workflows;
+namespace The42Coders\Workflows;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;

@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "the42coders\\Workflows\\": "src"
+            "The42Coders\\Workflows\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "the42coders\\Workflows\\Tests\\": "tests"
+            "The42Coders\\Workflows\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -46,10 +46,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "the42coders\\Workflows\\WorkflowsServiceProvider"
+                "The42Coders\\Workflows\\WorkflowsServiceProvider"
             ],
             "aliases": {
-                "Workflows": "the42coders\\Workflows\\WorkflowsFacade"
+                "Workflows": "The42Coders\\Workflows\\WorkflowsFacade"
             }
         }
     }
