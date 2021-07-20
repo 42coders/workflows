@@ -17,7 +17,7 @@ class DataBus
     {
         foreach ($fields as $name => $field) {
             //TODO: Quick fix to remove description but handle/filter this better in the future :(
-            if($name == 'description'){
+            if ($name == 'description') {
                 continue;
             }
             $className = $field['type'] ?? ValueResource::class;
