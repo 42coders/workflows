@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12" style="margin-bottom: 20px;">
                 <div class="settings-headline">
-                    <h1>{!! $element::$icon !!} {{__('workflows::workflows.Elements.'.$element->name) }} {{__('workflows::workflows.Settings') }}</h1>
+                    <h1>{!! $element::$icon !!} {{ $element::getTranslation()  }} {{__('workflows::workflows.Settings') }}</h1>
                 </div>
             </div>
             <div class="col-md-12">
