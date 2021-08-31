@@ -34,6 +34,6 @@ class CreateTriggersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('triggers');
+        Schema::dropIfExists(config('workflows.db_prefix').'triggers');
     }
 }

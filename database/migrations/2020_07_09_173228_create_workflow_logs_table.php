@@ -37,6 +37,6 @@ class CreateWorkflowLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('workflow_logs');
+        Schema::dropIfExists(config('workflows.db_prefix').'workflow_logs');
     }
 }

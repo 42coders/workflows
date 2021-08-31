@@ -36,6 +36,6 @@ class CreateTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists(config('workflows.db_prefix').'tasks');
     }
 }
