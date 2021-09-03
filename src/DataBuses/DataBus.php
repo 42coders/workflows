@@ -17,12 +17,22 @@ class DataBus
     {
         foreach ($fields as $name => $field) {
             //TODO: Quick fix to remove description but handle/filter this better in the future :(
+
             if ($name == 'description') {
                 continue;
             }
+
+            $field_value = $field['value'] ?? '';
+
+            if ($name == 'file' && !$field_value)
+            {
+                continue;
+            }
+
             $className = $field['type'] ?? ValueResource::class;
             $resource = new $className();
-            $this->data[$name] = $resource->getData($name, $field['value'], $model, $this);
+
+            $this->data[$name] = $resource->getData($name, $field_value, $model, $this);
         }
     }
 
