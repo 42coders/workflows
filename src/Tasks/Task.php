@@ -76,9 +76,8 @@ class Task extends Model implements TaskInterface
     /**
      * Return Collection of models by type.
      *
-     * @param array $attributes
-     * @param null  $connection
-     *
+     * @param  array  $attributes
+     * @param  null  $connection
      * @return \App\Models\Action
      */
     public function newFromBuilder($attributes = [], $connection = null)
@@ -103,7 +102,7 @@ class Task extends Model implements TaskInterface
     /**
      * Check if all Conditions for this Action pass.
      *
-     * @param Model $model
+     * @param  Model  $model
      * @return bool
      */
     public function checkConditions(Model $model, DataBus $data): bool
@@ -136,7 +135,7 @@ class Task extends Model implements TaskInterface
         $this->model = $model;
         $this->dataBus = $data;
         $this->workflowLog = $log;
-        $this->workflowLog->addTaskLog($this->workflowLog->id, $this->id, $this->name, TaskLog::$STATUS_START, '', \Illuminate\Support\Carbon::now());
+        $this->workflowLog->addTaskLog($this->workflowLog->id, $this->id, $this->name, TaskLog::$STATUS_START, json_encode($this->data_fields), \Illuminate\Support\Carbon::now());
 
         $this->log = TaskLog::createHelper($log->id, $this->id, $this->name);
 
@@ -182,5 +181,17 @@ class Task extends Model implements TaskInterface
         return view('workflows::layouts.settings_overlay', [
             'element' => $this,
         ]);
+    }
+
+    public static function getTranslation(): string
+    {
+        return __(static::getTranslationKey());
+    }
+
+    public static function getTranslationKey(): string
+    {
+        $className = (new \ReflectionClass(new static))->getShortName();
+
+        return "workflows::workflows.Elements.{$className}";
     }
 }

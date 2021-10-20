@@ -57,9 +57,8 @@ class Trigger extends Model
     /**
      * Return Collection of models by type.
      *
-     * @param array $attributes
-     * @param null  $connection
-     *
+     * @param  array  $attributes
+     * @param  null  $connection
      * @return \App\Models\Action
      */
     public function newFromBuilder($attributes = [], $connection = null)
@@ -93,5 +92,17 @@ class Trigger extends Model
         return view('workflows::layouts.settings_overlay', [
             'element' => $this,
         ]);
+    }
+
+    public static function getTranslation(): string
+    {
+        return __(static::getTranslationKey());
+    }
+
+    public static function getTranslationKey(): string
+    {
+        $className = (new \ReflectionClass(new static))->getShortName();
+
+        return "workflows::workflows.Elements.{$className}";
     }
 }

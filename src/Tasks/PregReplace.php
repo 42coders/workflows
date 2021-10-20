@@ -5,7 +5,7 @@ namespace the42coders\Workflows\Tasks;
 class PregReplace extends Task
 {
     public static $fields = [
-        'Patter' => 'pattern',
+        'Pattern' => 'pattern',
         'Replacement' => 'replacement',
         'Subject' => 'subject',
     ];
