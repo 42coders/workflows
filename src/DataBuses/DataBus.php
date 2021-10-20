@@ -24,7 +24,7 @@ class DataBus
 
             $field_value = $field['value'] ?? '';
 
-            if ($name === 'file' && !$field_value) {
+            if ($name === 'file' && ! $field_value) {
                 continue;
             }
 
@@ -40,7 +40,7 @@ class DataBus
         $output = '';
 
         foreach ($this->data as $line) {
-            $output .= $line . '\n';
+            $output .= $line.'\n';
         }
 
         return $output;

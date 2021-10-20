@@ -57,9 +57,8 @@ class Trigger extends Model
     /**
      * Return Collection of models by type.
      *
-     * @param array $attributes
-     * @param null  $connection
-     *
+     * @param  array  $attributes
+     * @param  null  $connection
      * @return \App\Models\Action
      */
     public function newFromBuilder($attributes = [], $connection = null)
