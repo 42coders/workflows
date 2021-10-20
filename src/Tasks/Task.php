@@ -182,4 +182,16 @@ class Task extends Model implements TaskInterface
             'element' => $this,
         ]);
     }
+
+    public static function getTranslation(): string
+    {
+        return __(static::getTranslationKey());
+    }
+
+    public static function getTranslationKey(): string
+    {
+        $className = (new \ReflectionClass(new static))->getShortName();
+
+        return "workflows::workflows.Elements.{$className}";
+    }
 }

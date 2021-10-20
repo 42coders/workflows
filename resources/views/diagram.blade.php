@@ -52,7 +52,7 @@
     <div class="col">
         @foreach(config('workflows.triggers.types') as $taskName => $taskClass)
             <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="{{ $taskName }}">
-                {!! $taskClass::$icon !!}<span> {{ __('workflows::workflows.Elements.'.$taskName) }}</span>
+                {!! $taskClass::$icon !!}<span> {{$taskClass::getTranslation() }}</span>
             </div>
         @endforeach
         @foreach(config('workflows.tasks') as $taskName => $taskClass)
@@ -90,19 +90,20 @@
     const editor = new Drawflow(id);
     editor.start();
 
-        @foreach($workflow->tasks as $task)
-    var new_node = `@include('workflows::layouts.task_node_html', ['elementName' => $task->name, 'element' => $task, 'type' => 'task', 'icon' => $task::$icon])`;
-    editor.addNode(0, '{{ $task->name }}', 1, 1, {{$task->pos_x}}, {{ $task->pos_y }}, '{{ $task->name }}', {
-        task_id: {{$task->id}},
-        type: 'task'
-    }, new_node);
-        @endforeach
-        @foreach($workflow->triggers as $trigger)
-    var new_node = `@include('workflows::layouts.task_node_html', ['elementName' => $trigger->name, 'element' => $trigger, 'type' => 'trigger', 'icon' => $trigger::$icon])`;
-    editor.addNode(0, '{{ $trigger->name }}', 0, 1, {{$trigger->pos_x}}, {{ $trigger->pos_y }}, '{{ $trigger->name }}', {
-        trigger_id: {{$trigger->id}},
-        type: 'trigger'
-    }, new_node);
+    @foreach($workflow->tasks as $task)
+        var new_node = `@include('workflows::layouts.task_node_html', ['elementName' => $task->getTranslation(), 'element' => $task, 'type' => 'task', 'icon' => $task::$icon])`;
+        editor.addNode(0, '{{ $task->name }}', 1, 1, {{$task->pos_x}}, {{ $task->pos_y }}, '{{ $task->name }}', {
+            task_id: {{$task->id}},
+            type: 'task'
+        }, new_node);
+    @endforeach
+
+    @foreach($workflow->triggers as $trigger)
+        var new_node = `@include('workflows::layouts.task_node_html', ['elementName' => $trigger->getTranslation(), 'element' => $trigger, 'type' => 'trigger', 'icon' => $trigger::$icon])`;
+        editor.addNode(0, '{{ $trigger->name }}', 0, 1, {{$trigger->pos_x}}, {{ $trigger->pos_y }}, '{{ $trigger->name }}', {
+            trigger_id: {{$trigger->id}},
+            type: 'trigger'
+        }, new_node);
 
     @endforeach
 
@@ -377,13 +378,13 @@
         switch (name) {
             @foreach(config('workflows.tasks') as $taskName => $taskClass)
             case '{{ $taskName }}':
-                var {{$taskName}}_new_node = `@include('workflows::layouts.task_node_html', ['elementName' => $taskName, 'fields' => $taskClass::$fields, 'type' => 'task', 'icon' => $taskClass::$icon])`;
+                var {{$taskName}}_new_node = `@include('workflows::layouts.task_node_html', ['elementName' => $taskClass::getTranslation(), 'fields' => $taskClass::$fields, 'type' => 'task', 'icon' => $taskClass::$icon])`;
                 editor.addNode(0, '{{ $taskName }}', 1, 1, pos_x, pos_y, '{{ $taskName }}', {type: 'task'}, {{$taskName}}_new_node);
                 break;
             @endforeach
             @foreach(config('workflows.triggers.types') as $triggerName => $triggerClass)
             case '{{$triggerName}}':
-                var {{$taskName}}_new_node = `@include('workflows::layouts.task_node_html', ['elementName' => $triggerName, 'fields' => $triggerClass::$fields, 'type' => 'trigger', 'icon' => $triggerClass::$icon])`;
+                var {{$taskName}}_new_node = `@include('workflows::layouts.task_node_html', ['elementName' => $triggerClass::getTranslation(), 'fields' => $triggerClass::$fields, 'type' => 'trigger', 'icon' => $triggerClass::$icon])`;
                 editor.addNode(0, '{{$triggerName}}', 0, 1, pos_x, pos_y, '{{$triggerName}}', {type: 'trigger'}, {{$taskName}}_new_node);
                 break;
             @endforeach

@@ -1,6 +1,6 @@
 <div>
     <div class="title-box">
-        {!! $icon !!} {{ __('workflows::workflows.Elements.'.$elementName) }}
+        {!! $icon !!} {{ $elementName }}
     </div>
     <div class="box">
         {{ $element->data_fields['description']['value'] ?? '' }}
