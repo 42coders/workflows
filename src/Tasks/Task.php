@@ -76,9 +76,8 @@ class Task extends Model implements TaskInterface
     /**
      * Return Collection of models by type.
      *
-     * @param array $attributes
-     * @param null  $connection
-     *
+     * @param  array  $attributes
+     * @param  null  $connection
      * @return \App\Models\Action
      */
     public function newFromBuilder($attributes = [], $connection = null)
@@ -103,7 +102,7 @@ class Task extends Model implements TaskInterface
     /**
      * Check if all Conditions for this Action pass.
      *
-     * @param Model $model
+     * @param  Model  $model
      * @return bool
      */
     public function checkConditions(Model $model, DataBus $data): bool
