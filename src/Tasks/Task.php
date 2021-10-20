@@ -136,7 +136,7 @@ class Task extends Model implements TaskInterface
         $this->model = $model;
         $this->dataBus = $data;
         $this->workflowLog = $log;
-        $this->workflowLog->addTaskLog($this->workflowLog->id, $this->id, $this->name, TaskLog::$STATUS_START, '', \Illuminate\Support\Carbon::now());
+        $this->workflowLog->addTaskLog($this->workflowLog->id, $this->id, $this->name, TaskLog::$STATUS_START, json_encode($this->data_fields), \Illuminate\Support\Carbon::now());
 
         $this->log = TaskLog::createHelper($log->id, $this->id, $this->name);
 
