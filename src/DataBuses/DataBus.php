@@ -18,14 +18,13 @@ class DataBus
         foreach ($fields as $name => $field) {
             //TODO: Quick fix to remove description but handle/filter this better in the future :(
 
-            if ($name == 'description') {
+            if ($name === 'description') {
                 continue;
             }
 
             $field_value = $field['value'] ?? '';
 
-            if ($name == 'file' && !$field_value)
-            {
+            if ($name === 'file' && !$field_value) {
                 continue;
             }
 
@@ -41,7 +40,7 @@ class DataBus
         $output = '';
 
         foreach ($this->data as $line) {
-            $output .= $line.'\n';
+            $output .= $line . '\n';
         }
 
         return $output;

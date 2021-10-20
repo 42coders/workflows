@@ -21,7 +21,7 @@ trait Fieldable
             return '';
         }
 
-        if (! isset($this->data_fields[$field])) {
+        if (!isset($this->data_fields[$field])) {
             return '';
         }
 
@@ -72,7 +72,7 @@ trait Fieldable
      */
     public function loadResourceIntelligence(string $field): string
     {
-        if (! isset($this->data_fields[$field])) {
+        if (!isset($this->data_fields[$field])) {
             $resources = config('workflows.data_resources');
             $class = reset($resources);
         } else {
