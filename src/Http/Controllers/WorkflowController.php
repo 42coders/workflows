@@ -326,4 +326,17 @@ class WorkflowController extends Controller
             'status' => 'started',
         ];
     }
+
+    public function triggerButton(Request $request, $triggerId)
+    {
+        $trigger = Trigger::findOrFail($triggerId);
+        $className = $request->model_class;
+        $resource = new $className();
+
+        $model = $resource->find($request->model_id);
+
+        $trigger->start($model, []);
+
+        return redirect()->back()->with('sucess', 'Button Triggered a Workflow');
+    }
 }

@@ -3,6 +3,7 @@
 return [
     'Elements' => [
         'ObserverTrigger' => 'Observer Trigger',
+        'ButtonTrigger' => 'Button Trigger',
         'SendMail' => 'Send Mail',
         'Execute' => 'Execute',
         'PregReplace' => 'Preg Replace',
