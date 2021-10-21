@@ -30,9 +30,9 @@ class ButtonTrigger extends Trigger
     }
 
     /**
-     * Renders the button_trigger blade template based on the ButtonTrigger values and the Model passed to the Trigger
+     * Renders the button_trigger blade template based on the ButtonTrigger values and the Model passed to the Trigger.
      *
-     * @param Model $model
+     * @param  Model  $model
      * @return string
      */
     public function renderButton(Model $model): string
@@ -50,8 +50,8 @@ class ButtonTrigger extends Trigger
      * Renders a TriggerButton based on the Workflow Id. It will only render the first Trigger if two
      * triggers are existing in the Workflow.
      *
-     * @param int $workflow_id
-     * @param Model $model
+     * @param  int  $workflow_id
+     * @param  Model  $model
      * @return string
      */
     public static function renderButtonByWorkflowId(int $workflow_id, Model $model): string
@@ -72,10 +72,10 @@ class ButtonTrigger extends Trigger
     }
 
     /**
-     * Renders a Trigger Button by its defined Name
+     * Renders a Trigger Button by its defined Name.
      *
-     * @param string $name
-     * @param Model $model
+     * @param  string  $name
+     * @param  Model  $model
      * @return string
      */
     public static function renderButtonByName(string $name, Model $model): string
@@ -90,10 +90,10 @@ class ButtonTrigger extends Trigger
     }
 
     /**
-     * Renders all Trigger Buttons with the same category
+     * Renders all Trigger Buttons with the same category.
      *
-     * @param string $categoryName
-     * @param Model $model
+     * @param  string  $categoryName
+     * @param  Model  $model
      * @return string
      */
     public static function renderButtonsByCategory(string $categoryName, Model $model): string
