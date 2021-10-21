@@ -86,6 +86,34 @@ To make it Work add the WorkflowObservable to your Eloquent Model.
  use WorkflowObservable;
 ```
 
+#### ButtonTrigger
+
+The Button Trigger is able to render a button in your "frontend" and Execute a Workflow based by a click on it. 
+ButtonTrigger also accept an Model which they pass to the Workflow.
+
+You can influence the buttons by adding your own classes or styles directly to each ButtonTrigger.
+Also you can publish the blade and change it according to your needs.
+
+You have multiple ways of rendering ButtonTrigger.
+
+##### ByName
+``` php
+ {!! the42coders\Workflows\Triggers\ButtonTrigger::renderButtonByName('name', $model) !!}
+```
+
+##### ByWorkflowId
+``` php
+ {!! the42coders\Workflows\Triggers\ButtonTrigger::renderButtonByWorkflowId(workflow_id, $model) !!}
+```
+
+##### ByCategory
+This will return all Triggers from the Category.
+
+``` php
+ {!! the42coders\Workflows\Triggers\ButtonTrigger::renderButtonsByCategory('categoryName', $model) !!}
+```
+
+
 ### Tasks
 
 A Task is a single code execution Node in the Workflow. 
