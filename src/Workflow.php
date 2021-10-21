@@ -34,4 +34,9 @@ class Workflow extends Model
     {
         return $this->hasMany('the42coders\Workflows\Loggers\WorkflowLog');
     }
+
+    public function getTriggerByClass($class)
+    {
+        return $this->triggers()->where('type', $class)->first();
+    }
 }

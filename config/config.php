@@ -87,13 +87,16 @@ return [
                 'forceDeleted',
             ],
             'classes' => [
-                \App\User::class => 'User',
+                \App\Models\User::class => 'User',
                 \the42coders\Workflows\Loggers\WorkflowLog::class => 'WorkflowLog',
             ],
         ],
         'Button' => [
             'classes' => [
-                \App\User::class => 'User',
+                \App\Models\User::class => 'User',
+            ],
+            'categories' => [
+                'all' => 'All',
             ]
         ]
 
