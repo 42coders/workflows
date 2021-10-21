@@ -97,8 +97,8 @@ return [
             ],
             'categories' => [
                 'all' => 'All',
-            ]
-        ]
+            ],
+        ],
 
     ],
     'queue' => 'redis',
