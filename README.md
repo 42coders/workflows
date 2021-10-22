@@ -130,7 +130,14 @@ LoadModel | Loads an Eloquent Model from the DB. You can provide the Class and t
 SaveFile | The SaveFile Task allows you to save Data to a File. Works easily with your registered Storage defines.
 SaveModel | Saves an Eloquent Model.
 SendMail | The SendMail Task allows you to send a Mail. You can pass the Content and Attachments to it. (Works great with HtmlInput and DomPDF) 
+SendSlackMessage | This Task let you send a Slack Message. Please read the Section about Slack Notifications to make your app ready too use this. 
 
+#### SendSlackMessage
+
+To send Slack messages you need to follow this 3 points.
+1. You need to install Slack notifications [Laravel Slack Documentation](https://laravel.com/docs/8.x/notifications#slack-notifications)
+2. You need to set up an incoming Slack Webhook [Slack Documentation](https://api.slack.com/messaging/webhooks)
+3. Set the WebhookUrl to your env file with WORKFLOW_SLACK_CHANNEL=YourSlackWebhookUrl
 
 ### DataBus
 
