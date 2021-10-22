@@ -51,7 +51,7 @@ class DataBus
         return $this->data[$key] ?? $default;
     }
 
-    public function setOutput(string $key, string $value)
+    public function setOutput(string $key, $value)
     {
         $this->data[$this->get($key, $key)] = $value;
     }

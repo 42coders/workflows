@@ -120,13 +120,16 @@ A Task is a single code execution Node in the Workflow.
 
 Task | Description
 ---- | -----------
-HtmlInput | The HtmlInput Task offers you a Trix Input Field which is able to render Blade. You can put in placeholders for dynamic content in two Ways. From the Model passed through the Workflow or from the DataBus.
-Execute | The Execute Task offers you to execute Shell Commands and is able to push the output of them to the DataBus.
-PregReplace | The PregReplace Task offers you a way to to a preg replace on a Value from the Model or a DataBus Variable.
+ChangeModel | Changes an Eloquent Model (Its not saving the changes to the DB)
 DomPDF | The DomPDF Task offers you a way to generate a PDF from HTML and put it to the DataBus (Works great with the HtmlInput Task).
-SaveFile | The SaveFile Task allows you to save Data to a File. Works easily with your registered Storage defines.
-SendMail | The SendMail Task allows you to send a Mail. You can pass the Content and Attachments to it. (Works great with HtmlInput and DomPDF) 
+Execute | The Execute Task offers you to execute Shell Commands and is able to push the output of them to the DataBus.
+HtmlInput | The HtmlInput Task offers you a Trix Input Field which is able to render Blade. You can put in placeholders for dynamic content in two Ways. From the Model passed through the Workflow or from the DataBus.
 HttpStatus | The HttpStatus offers you a way to receive the Http Status of a given URL.
+PregReplace | The PregReplace Task offers you a way to to a preg replace on a Value from the Model or a DataBus Variable.
+LoadModel | Loads an Eloquent Model from the DB. You can provide the Class and the id.
+SaveFile | The SaveFile Task allows you to save Data to a File. Works easily with your registered Storage defines.
+SaveModel | Saves an Eloquent Model.
+SendMail | The SendMail Task allows you to send a Mail. You can pass the Content and Attachments to it. (Works great with HtmlInput and DomPDF) 
 
 
 ### DataBus
