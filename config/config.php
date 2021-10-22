@@ -29,6 +29,17 @@ return [
         'HtmlInput' => the42coders\Workflows\Tasks\HtmlInput::class,
         'DomPDF' => the42coders\Workflows\Tasks\DomPDF::class,
         'HttpStatus' => the42coders\Workflows\Tasks\HttpStatus::class,
+        'LoadModel' => the42coders\Workflows\Tasks\LoadModel::class,
+        'ChangeModel' => the42coders\Workflows\Tasks\ChangeModel::class,
+        'SaveModel' => the42coders\Workflows\Tasks\SaveModel::class,
+    ],
+
+    'task_settings' => [
+        'LoadModel' => [
+            'classes' => [
+                \App\Models\User::class => 'User',
+            ],
+        ],
     ],
 
     /*

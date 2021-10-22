@@ -15,7 +15,7 @@ class HtmlInput extends Task
         'HtmlOutput' => 'html_output',
     ];
 
-    public static $icon = '<i class="fas fa-terminal"></i>';
+    public static $icon = '<i class="fas fa-code"></i>';
 
     public function inputFields(): array
     {
