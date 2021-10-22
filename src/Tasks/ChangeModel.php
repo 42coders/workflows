@@ -2,8 +2,6 @@
 
 namespace the42coders\Workflows\Tasks;
 
-use the42coders\Workflows\Fields\DropdownField;
-
 class ChangeModel extends Task
 {
     public static $fields = [

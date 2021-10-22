@@ -12,7 +12,7 @@ return [
         'HttpStatus' => 'Http Status',
         'LoadModel' => 'Load Model',
         'ChangeModel' => 'Change Model',
-        'SaveModel' => 'Save Model'
+        'SaveModel' => 'Save Model',
     ],
     'Resources' => [
         'ValueResource' => 'From Direct Input',

@@ -8,7 +8,7 @@ class LoadModel extends Task
 {
     public static $fields = [
         'Model Class' => 'model_class',
-        'Model Id' => 'model_id'
+        'Model Id' => 'model_id',
     ];
 
     public static $output = [
