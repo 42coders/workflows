@@ -2,9 +2,8 @@
 
 namespace the42coders\Workflows\Tasks;
 
-use the42coders\Workflows\Fields\DropdownField;
-use the42coders\Workflows\Notifications\SlackNotification;
 use Illuminate\Support\Facades\Notification;
+use the42coders\Workflows\Notifications\SlackNotification;
 
 class SendSlackMessage extends Task
 {
