@@ -13,6 +13,7 @@ return [
         'LoadModel' => 'Load Model',
         'ChangeModel' => 'Change Model',
         'SaveModel' => 'Save Model',
+        'SendSlackMessage' => 'Send Slack Message',
     ],
     'Resources' => [
         'ValueResource' => 'From Direct Input',

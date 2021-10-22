@@ -32,6 +32,7 @@ return [
         'LoadModel' => the42coders\Workflows\Tasks\LoadModel::class,
         'ChangeModel' => the42coders\Workflows\Tasks\ChangeModel::class,
         'SaveModel' => the42coders\Workflows\Tasks\SaveModel::class,
+        'SendSlackMessage' => the42coders\Workflows\Tasks\SendSlackMessage::class,
     ],
 
     'task_settings' => [
