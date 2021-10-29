@@ -14,6 +14,7 @@ return [
         'ChangeModel' => 'Change Model',
         'SaveModel' => 'Save Model',
         'SendSlackMessage' => 'Send Slack Message',
+        'TextInput' => 'Text Input',
     ],
     'Resources' => [
         'ValueResource' => 'From Direct Input',

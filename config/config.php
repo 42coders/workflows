@@ -33,6 +33,7 @@ return [
         'ChangeModel' => the42coders\Workflows\Tasks\ChangeModel::class,
         'SaveModel' => the42coders\Workflows\Tasks\SaveModel::class,
         'SendSlackMessage' => the42coders\Workflows\Tasks\SendSlackMessage::class,
+        'TextInput' => the42coders\Workflows\Tasks\TextInput::class,
     ],
 
     'task_settings' => [
