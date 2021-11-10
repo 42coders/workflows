@@ -11,10 +11,14 @@ The Workflow Package adds Drag & Drop Workflows to your Laravel Application. A W
 The Trigger is responsible for starting a Workflow. The Tasks are single nodes of code execution. 
 The package comes with some handy tasks bundled, but you can easily write your own as well.
 
+![Screenshot](resources/img/workflow_concept.png)
+
 If you are interested in news and updates 
 - Follow me on [Twitter](https://twitter.com/gwagwagwa) && || register to our [Newsletter](https://workflows.42coders.com)
 
 [Video Tutorial](http://www.youtube.com/watch?v=J-fplZGlTZI "Short Introduction Video")
+
+[![Alt text](https://img.youtube.com/vi/J-fplZGlTZI/0.jpg)](https://www.youtube.com/watch?v=J-fplZGlTZI)
 
 ## Installation
 
