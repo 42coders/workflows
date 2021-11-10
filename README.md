@@ -18,7 +18,7 @@ If you are interested in news and updates
 
 [Video Tutorial](http://www.youtube.com/watch?v=J-fplZGlTZI "Short Introduction Video")
 
-[![Alt text](https://img.youtube.com/vi/J-fplZGlTZI/0.jpg)](https://www.youtube.com/watch?v=J-fplZGlTZI)
+[![Alt text](https://img.youtube.com/vi/J-fplZGlTZI/mqdefault.jpg)](https://www.youtube.com/watch?v=J-fplZGlTZI)
 
 ## Installation
 
