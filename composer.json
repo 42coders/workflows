@@ -19,7 +19,8 @@
         "php": "^7.2|^8.0",
         "illuminate/support": "*",
         "barryvdh/laravel-dompdf": "^0.9.0",
-        "guzzlehttp/guzzle": "^7"
+        "guzzlehttp/guzzle": "^7",
+        "doctrine/dbal": "^3"
     },
     "require-dev": {
         "orchestra/testbench": "^5.2",
