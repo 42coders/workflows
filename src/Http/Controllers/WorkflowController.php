@@ -57,11 +57,16 @@ class WorkflowController extends Controller
         return redirect(route('workflow.index'));
     }
 
+    /**
+     * Deletes the Workflow and over cascading also the Tasks, TaskLogs, WorkflowLogs and Triggers.
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function delete($id)
     {
         $workflow = Workflow::find($id);
 
-        //TODO: delete all depending tasks?
         $workflow->delete();
 
         return redirect(route('workflow.index'));
