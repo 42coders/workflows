@@ -13,7 +13,6 @@ class UpdateCascadeDelete extends Migration
      */
     public function up()
     {
-
         Schema::table(config('workflows.db_prefix').'task_logs', function (Blueprint $table) {
             $table->bigInteger('task_id')->unsigned()->change();
             $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
@@ -34,8 +33,6 @@ class UpdateCascadeDelete extends Migration
             $table->bigInteger('workflow_id')->unsigned()->change();
             $table->foreign('workflow_id')->references('id')->on('workflows')->onDelete('cascade');
         });
-
-
     }
 
     /**
