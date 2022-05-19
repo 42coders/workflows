@@ -61,7 +61,7 @@ trait WorkflowObservable
 
     public static function startWorkflows(Model $model, string $event)
     {
-        if(!in_array($event, config('workflows.triggers.Observers.events'))){
+        if (! in_array($event, config('workflows.triggers.Observers.events'))) {
             return false;
         }
 
