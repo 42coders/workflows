@@ -1,4 +1,4 @@
-<form action="{{config('workflows.prefix')}}/workflows/button_trigger/execute/{{ $triggerId }}" method="POST">
+<form action="{{ route('workflows.triggers.button', ['id' => $triggerId]) }}" method="POST">
     @csrf
     <input name="model_id" id="model_id" type="hidden" value="{{ $model->id }}">
     <input name="model_class" id="model_class" type="hidden" value="{{ get_class($model) }}">

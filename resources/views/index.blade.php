@@ -9,7 +9,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a href="{{config('workflows.prefix')}}/workflows/create" class="btn btn-default">{{__('workflows::workflows.create')}}</a>
+                <a href="{{ route('workflow.create') }}" class="btn btn-default">{{__('workflows::workflows.create')}}</a>
             </div>
         </div>
         <div class="row">
@@ -27,9 +27,9 @@
                             <td>{{ $workflow->tasks->count() }}</td>
                             <td>{{ $workflow->created_at->format('d.m.Y') }}</td>
                             <td>
-                                <a href="{{config('workflows.prefix')}}/workflows/{{$workflow->id}}"><i class="fas fa-eye"></i></a> -
-                                <a href="{{config('workflows.prefix')}}/workflows/{{$workflow->id}}/edit"><i class="fas fa-edit"></i></a> -
-                                <a href="{{config('workflows.prefix')}}/workflows/{{$workflow->id}}/delete"><i class="fas fa-trash-alt"></i></a>
+                                <a href="{{ route('workflow.show', ['workflow' => $workflow]) }}"><i class="fas fa-eye"></i></a> -
+                                <a href="{{ route('workflow.edit', ['workflow' => $workflow]) }}"><i class="fas fa-edit"></i></a> -
+                                <a href="{{ route('workflow.delete', ['workflow' => $workflow]) }}"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                     @endforeach

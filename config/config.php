@@ -124,7 +124,7 @@ return [
     | Configure if the package should load it's default routes. Default its not using the default routes. We recommend
     | using them as described in the Documentation because you should put a Auth middleware on them.
     */
-    'prefix' => '',
+    'prefix' => 'workflows',
 
     /*
     |--------------------------------------------------------------------------

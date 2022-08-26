@@ -10,7 +10,7 @@
 
         <div class="row">
             <div class="col-md-12">
-               <form action="{{ route('workflow.update', ['id' => $workflow->id]) }}" method="POST">
+               <form action="{{ route('workflow.update', ['workflow' => $workflow]) }}" method="POST">
                    @csrf
                    <div class="col-md-12">
                    <div class="form-group">
@@ -18,7 +18,7 @@
                    </div>
                    </div>
                    <div class="col-md-12 text-right">
-                   <a href="{{config('workflows.prefix')}}/workflows" class="btn btn-warning">{{ __('workflows::workflows.Cancel')}}</a>
+                   <a href="{{ route('workflow.index') }}" class="btn btn-warning">{{ __('workflows::workflows.Cancel')}}</a>
                    <button type="submit" class="btn btn-success">{{ __('workflows::workflows.Save')}}</button>
                    </div>
                </form>
