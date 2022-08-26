@@ -8,7 +8,7 @@ class Workflows
 {
     public static function routes()
     {
-        Route::group(['prefix' => config('workflows.prefix'), 'namespace' => __NAMESPACE__.'\Http\Controllers'], function () {
+        Route::group(['prefix' => empty(config('workflows.prefix')) ? 'workflows' : config('workflows.prefix'), 'namespace' => __NAMESPACE__.'\Http\Controllers'], function () {
             Route::get('/', 'WorkflowController@index')->name('workflow.index');
             Route::get('create', 'WorkflowController@create')->name('workflow.create');
             Route::post('store', 'WorkflowController@store')->name('workflow.store');
