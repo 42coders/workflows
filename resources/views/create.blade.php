@@ -10,7 +10,7 @@
 
         <div class="row">
             <div class="col-md-12">
-               <form action="{{ route('workflow.store', ['workflow' => $workflow] }}" method="POST">
+               <form action="{{ route('workflow.store') }}" method="POST">
                    @csrf
                    <div class="col-md-12">
                    <div class="form-group">

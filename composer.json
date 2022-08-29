@@ -16,15 +16,15 @@
         }
     ],
     "require": {
-        "php": "^7.2|^8.0",
-        "illuminate/support": "*",
+        "php": ">7.2",
         "barryvdh/laravel-dompdf": "^0.9.0|^1.0",
+        "doctrine/dbal": "^3.4",
         "guzzlehttp/guzzle": "^7",
-        "doctrine/dbal": "^3"
+        "illuminate/support": "*"
     },
     "require-dev": {
-        "orchestra/testbench": "^5.2",
-        "phpunit/phpunit": "^8.0"
+        "orchestra/testbench": "^7",
+        "phpunit/phpunit": "^9"
     },
     "autoload": {
         "psr-4": {

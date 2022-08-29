@@ -36,7 +36,7 @@ class WorkflowController extends Controller
     {
         $workflow = Workflow::create($request->all());
 
-        return redirect(route('workflow.show', ['id' => $workflow->id]));
+        return redirect(route('workflow.show', ['workflow' => $workflow]));
     }
 
     public function edit($id)

@@ -274,7 +274,7 @@ class TasksTest extends TestCase
 
         $task->execute();
 
-        $this->assertSame($task->getData('http_status'), '200');
+        $this->assertSame($task->getData('http_status'), 200);
     }
 
     /** @test */
