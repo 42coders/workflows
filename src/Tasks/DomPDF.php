@@ -2,7 +2,7 @@
 
 namespace the42coders\Workflows\Tasks;
 
-use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DomPDF extends Task
 {
@@ -18,7 +18,7 @@ class DomPDF extends Task
 
     public function execute(): void
     {
-        $pdf = PDF::loadHTML($this->getData('html'));
+        $pdf = Pdf::loadHTML($this->getData('html'));
         $this->setDataArray('pdf_file', $pdf->output());
     }
 }
