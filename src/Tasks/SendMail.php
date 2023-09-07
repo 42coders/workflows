@@ -10,6 +10,7 @@ class SendMail extends Task
         'Sender' => 'sender',
         'Content' => 'content',
         'Files' => 'files',
+        'File_Name' => 'file_name',
     ];
 
     public static $icon = '<i class="far fa-envelope"></i>';
@@ -25,7 +26,9 @@ class SendMail extends Task
             $counter = 1;
             if (is_array($dataBus->get('files'))) {
                 foreach ($dataBus->get('files') as $file) {
-                    $message->attachData($file, 'Datei_'.$counter);
+                    $message->attachData($file, $dataBus->get('file_name').'_'.$counter, [
+                        'mime' => 'application/pdf',
+                    ]);
                     $counter++;
                 }
             }
