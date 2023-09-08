@@ -26,7 +26,7 @@ class SendMail extends Task
             $counter = 1;
             if (is_array($dataBus->get('files'))) {
                 foreach ($dataBus->get('files') as $file) {
-                    $message->attachData($file, $dataBus->get('file_name').'_'.$counter, [
+                    $message->attachData($file, $dataBus->get('file_name'), [
                         'mime' => 'application/pdf',
                     ]);
                     $counter++;

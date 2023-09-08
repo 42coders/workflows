@@ -15,9 +15,7 @@
     @endforeach
 
     <div class="col-md-12">
-        <textarea id="{{ $field }}->value" class="form-control" name="{{ $field }}->value" style="height: 400px">
-            {!! $value !!}
-        </textarea>
+        <textarea id="{{ $field }}->value" class="form-control" name="{{ $field }}->value" style="height: 400px">{!! $value !!}</textarea>
     </div>
 </div>
 <script>
