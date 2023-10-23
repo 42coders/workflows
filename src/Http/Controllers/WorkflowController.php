@@ -60,7 +60,7 @@ class WorkflowController extends Controller
     /**
      * Deletes the Workflow and over cascading also the Tasks, TaskLogs, WorkflowLogs and Triggers.
      *
-     * @param $id
+     * @param  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function delete($id)
