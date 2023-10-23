@@ -8,7 +8,7 @@ class DataBusResource implements Resource
 {
     public function getData(string $name, string $value, Model $model, DataBus $dataBus)
     {
-        return $dataBus->data[$dataBus->data[$value]];
+        return $dataBus->data[$value];
     }
 
     public static function checkCondition(Model $element, DataBus $dataBus, string $field, string $operator, string $value)

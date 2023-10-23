@@ -11,6 +11,8 @@ class SendMail extends Task
         'Content' => 'content',
         'Files' => 'files',
         'File_Name' => 'file_name',
+        'CC' => 'cc',
+        'BCC' => 'bcc',
     ];
 
     public static $icon = '<i class="far fa-envelope"></i>';
@@ -31,6 +33,12 @@ class SendMail extends Task
                     ]);
                     $counter++;
                 }
+            }
+            if(!empty($dataBus->get('cc'))){
+                $message->cc($dataBus->get('cc'));
+            }
+            if(!empty($dataBus->get('bcc'))){
+                $message->bcc($dataBus->get('bcc'));
             }
         });
     }

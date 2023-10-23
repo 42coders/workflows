@@ -35,7 +35,7 @@ class SlackNotification extends Notification
         return ['slack'];
     }
 
-    public function toSlack($notifiable)
+    public function toSlack($notifiable): SlackMessage
     {
         return (new SlackMessage)
             ->to($this->to)
