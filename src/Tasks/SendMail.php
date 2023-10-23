@@ -34,10 +34,10 @@ class SendMail extends Task
                     $counter++;
                 }
             }
-            if(!empty($dataBus->get('cc'))){
+            if (! empty($dataBus->get('cc'))) {
                 $message->cc($dataBus->get('cc'));
             }
-            if(!empty($dataBus->get('bcc'))){
+            if (! empty($dataBus->get('bcc'))) {
                 $message->bcc($dataBus->get('bcc'));
             }
         });
