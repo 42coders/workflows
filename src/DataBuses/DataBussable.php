@@ -14,7 +14,6 @@ trait DataBussable
         $newFields = $passedFields;
 
         if (! empty($this->parentable)) {
-
             //foreach($this->parentable::$fields as $key => $value){
             //    $newFields[$key] = $this->parentable->name.' - '.$value;
             //}
