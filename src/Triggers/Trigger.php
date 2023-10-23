@@ -84,7 +84,39 @@ class Trigger extends Model
     {
         $log = WorkflowLog::createHelper($this->workflow, $model, $this);
         $dataBus = new DataBus($data);
+
+        try {
+            $this->checkConditions($model, $dataBus);
+        } catch (\Exception $e) {
+            $log->setError($e->getMessage(), $dataBus);
+            exit;
+        }
+
         ProcessWorkflow::dispatch($model, $dataBus, $this, $log);
+    }
+
+    public function checkConditions(Model $model, DataBus $data): bool
+    {
+        //TODO: This needs to get smoother :(
+        if (empty($this->conditions)) {
+            return true;
+        }
+
+        $conditions = json_decode($this->conditions);
+
+        foreach ($conditions->rules as $rule) {
+            $ruleDetails = explode('-', $rule->id);
+            $DataBus = $ruleDetails[0];
+            $field = $ruleDetails[1];
+
+            $result = config('workflows.data_resources')[$DataBus]::checkCondition($model, $data, $field, $rule->operator, $rule->value);
+
+            if (! $result) {
+                throw new \Exception('The Condition for Task '.$this->name.' with the field '.$rule->field.' '.$rule->operator.' '.$rule->value.' failed.');
+            }
+        }
+
+        return true;
     }
 
     public function getSettings()

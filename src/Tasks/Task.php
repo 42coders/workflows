@@ -120,7 +120,7 @@ class Task extends Model implements TaskInterface
             $DataBus = $ruleDetails[0];
             $field = $ruleDetails[1];
 
-            $result = config('workflows.data_resources')[$DataBus]::checkCondition($this, $data, $field, $rule->operator, $rule->value);
+            $result = config('workflows.data_resources')[$DataBus]::checkCondition($model, $data, $field, $rule->operator, $rule->value);
 
             if (! $result) {
                 throw new \Exception('The Condition for Task '.$this->name.' with the field '.$rule->field.' '.$rule->operator.' '.$rule->value.' failed.');
@@ -142,7 +142,7 @@ class Task extends Model implements TaskInterface
         $this->dataBus->collectData($model, $this->data_fields);
 
         try {
-            $this->checkConditions($this->model, $this->dataBus);
+            $this->checkConditions($model, $this->dataBus);
         } catch (ConditionFailedError $e) {
             throw $e;
         }
