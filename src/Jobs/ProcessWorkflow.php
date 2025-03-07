@@ -53,7 +53,7 @@ class ProcessWorkflow implements ShouldQueue
             DB::rollBack();
             $this->log->setError($e->getMessage(), $this->dataBus);
             $this->log->createTaskLogsFromMemory();
-            if(config('workflows.debug')) {
+            if (config('workflows.debug')) {
                 throw $e;
             }
             //dd($e);

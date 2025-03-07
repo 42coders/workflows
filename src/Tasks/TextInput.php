@@ -26,7 +26,6 @@ class TextInput extends Task
 
     public function execute(): void
     {
-
         $text = str_replace('&gt;', '>', $this->getData('text'));
 
         $php = Blade::compileString($text);

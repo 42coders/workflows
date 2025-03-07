@@ -18,7 +18,6 @@ class RunCommand extends Task
 
     public function execute(): void
     {
-
         $this->setData('command_output', Artisan::call($this->getData('command')));
     }
 }
